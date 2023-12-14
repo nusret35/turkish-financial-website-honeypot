@@ -1,10 +1,12 @@
 from flask import Flask, render_template
+from fetch_rss import news_feed_html
 
 app = Flask("cs437-project")
 
 @app.route("/index.html")
 def main_page():
-    return render_template('index.html')
+    news_html_content = news_feed_html()
+    return render_template('index.html',news_html_content=news_html_content)
 
 
 @app.route("/category.html")

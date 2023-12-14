@@ -152,20 +152,33 @@
                 <div class="col-lg-8">
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+                        <div class="news-image"></div>
+                    
                         <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-3">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-body" href="">Jan 01, 2045</a>
-                            </div>
-                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">Lorem ipsum dolor sit amet elit vitae porta diam...</h1>
-                            <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                                magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                                amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                                sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                                aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                sit stet no diam kasd vero.</p>
+                            <div class="subject-and-date"></div>
+                            <script>
+                                function getParams() {
+                                    const params = new URLSearchParams(window.location.search);
+                                    const title = params.get('title');
+                                    const description = params.get('description');
+                                    const image_src = params.get('image_src');
+                                    const source_url = params.get('source_url');
+                                    const date = params.get('date');
+                                    const subject = params.get('subject');
+                                    const outputSubjectAndDate = document.querySelector('.subject-and-date');
+                                    const outputImage = document.querySelector('.news-image');
+                                    if (outputImage) {
+                                        outputImage.innerHTML = `<img class="img-fluid w-100" src="${image_src}" style="object-fit: cover;">`;
+                                    }
+                                    if (outputSubjectAndDate) {
+                                     outputSubjectAndDate.innerHTML = `<a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${subject}</a><a class="text-body" href="">${date}</a> <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${title}</h1><p>${description}</p>`;
+                                    }
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        getParams();
+                                    });
+                                }
+                                window.onload = getParams;
+                            </script>                            
                             <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
                                 vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
                                 nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
