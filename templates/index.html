@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizNews - Free News Website Template</title>
+    <title>TurkishNews - Free News Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -23,9 +23,22 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <style>
+
+
+        .navbar-dark .navbar-nav .nav-item .nav-link:hover, .navbar-dark .navbar-nav .nav-item:hover,
+    .navbar-dark .navbar-nav .nav-item.active {
+        background-color: red !important;
+    }
+    .mini-prof-image{
+        width: 30px;
+        margin: 0;
+    }
+    </style>
 </head>
 
 <body>
+
     <!-- Topbar Start -->
     <div class="container-fluid d-none d-lg-block">
         <div class="row align-items-center bg-dark px-lg-5">
@@ -33,7 +46,7 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
+                            <a class="nav-link text-body small" href="/">Home</a>
                         </li>
                         <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="#">Advertise</a>
@@ -42,31 +55,21 @@
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
+                            {% if username != 'guest' %}
+                                <a class="nav-link text-body small" href="/logout">Logout</a>
+                            {% else %}
+                                <a class="nav-link text-body small" href="login.html">Login</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </nav>
             </div>
+
             <div class="col-lg-3 text-right d-none d-md-block">
-                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                            <p class="nav-link text-body" href="#">{{ username }} <img class="mini-prof-image" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/></p>
                         </li>
                     </ul>
                 </nav>
@@ -74,14 +77,15 @@
         </div>
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-secondary font-weight-normal">News</span></h1>
+                <a href="/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-danger">Turkish<span class="text-secondary font-weight-normal">News</span></h1>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
                 <a href="https://htmlcodex.com"><img class="img-fluid" src="static/img/ads-728x90.png" alt=""></a>
             </div>
         </div>
+
     </div>
     <!-- Topbar End -->
 
@@ -89,15 +93,15 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
+            <a href="/" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-danger">Turkish<span class="text-white font-weight-normal">News</span></h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="category.html" class="nav-item nav-link">Category</a>
                     <a href="single.html" class="nav-item nav-link">Single News</a>
                     <div class="nav-item dropdown">
@@ -113,7 +117,7 @@
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
-                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
+                        <button class="input-group-text bg-danger text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
@@ -128,7 +132,67 @@
         <div class="row">
             <div class="col-lg-7 px-0">
                 <div class="owl-carousel main-carousel position-relative">
-
+                    {% if news_html_content %}
+                        {{ news_html_content|safe }}
+                    {% else %}
+                        <p>No news available at the moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-5 px-0">
+                <div class="row mx-0">
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/news-700x435-2.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/news-700x435-3.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/news-700x435-4.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,7 +206,7 @@
             <div class="row align-items-center bg-dark">
                 <div class="col-12">
                     <div class="d-flex justify-content-between">
-                        <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
+                        <div class="bg-danger text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                             style="width: calc(100% - 170px); padding-right: 90px;">
                             <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
@@ -163,11 +227,61 @@
                 <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
             </div>
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-                {% if news_html_content %}
-                    {{ news_html_content|safe }}
-                {% else %}
-                    <p>No news available at the moment.</p>
-                {% endif %}
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="static/img/news-700x435-2.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="static/img/news-700x435-3.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="static/img/news-700x435-4.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <img class="img-fluid h-100" src="static/img/news-700x435-5.jpg" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a>
+                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                        </div>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -191,7 +305,7 @@
                                 <img class="img-fluid w-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
                                             href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
@@ -216,7 +330,7 @@
                                 <img class="img-fluid w-100" src="static/img/news-700x435-2.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
                                             href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
@@ -244,7 +358,7 @@
                                 <img class="img-fluid w-100" src="static/img/news-700x435-3.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
                                             href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
@@ -267,7 +381,7 @@
                                 <img class="img-fluid w-100" src="static/img/news-700x435-4.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
                                             href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
@@ -290,7 +404,7 @@
                                 <img class="img-fluid" src="static/img/news-110x110-1.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -300,7 +414,7 @@
                                 <img class="img-fluid" src="static/img/news-110x110-2.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -312,7 +426,7 @@
                                 <img class="img-fluid" src="static/img/news-110x110-3.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -322,7 +436,7 @@
                                 <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -340,7 +454,7 @@
                                 <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
                                     <div class="mt-auto p-4">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
                                                 href="">Business</a>
                                             <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                         </div>
@@ -366,7 +480,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-1.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -376,7 +490,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-2.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -388,7 +502,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-3.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -398,7 +512,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-4.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -464,7 +578,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-1.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -474,7 +588,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-2.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -484,7 +598,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-3.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -494,7 +608,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-4.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -504,7 +618,7 @@
                                 <img class="img-fluid" src="static/imgnews-110x110-5.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
@@ -524,7 +638,7 @@
                             <div class="input-group mb-2" style="width: 100%;">
                                 <input type="text" class="form-control form-control-lg" placeholder="Your Email">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                                    <button class="btn btn-danger font-weight-bold px-3">Sign Up</button>
                                 </div>
                             </div>
                             <small>Lorem ipsum dolor sit amet elit</small>
@@ -581,21 +695,21 @@
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
                 <div class="mb-3">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
                     <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
                 </div>
                 <div class="mb-3">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
                     <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
                 </div>
                 <div class="">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-danger text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
                     <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
@@ -662,7 +776,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="btn btn-danger btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

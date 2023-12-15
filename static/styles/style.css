@@ -2363,40 +2363,40 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-primary {
+.btn-danger {
   color: #212529;
   background-color: #FFCC00;
   border-color: #FFCC00;
 }
 
-.btn-primary:hover {
+.btn-danger:hover {
   color: #212529;
   background-color: #d9ad00;
   border-color: #cca300;
 }
 
-.btn-primary:focus, .btn-primary.focus {
+.btn-danger:focus, .btn-danger.focus {
   color: #212529;
   background-color: #d9ad00;
   border-color: #cca300;
   box-shadow: 0 0 0 0.2rem rgba(222, 179, 6, 0.5);
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-danger.disabled, .btn-danger:disabled {
   color: #212529;
   background-color: #FFCC00;
   border-color: #FFCC00;
 }
 
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
+.btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
   color: #212529;
   background-color: #cca300;
   border-color: #bf9900;
 }
 
-.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
+.btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
+.show > .btn-danger.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(222, 179, 6, 0.5);
 }
 
@@ -4668,17 +4668,17 @@ a.badge:hover, a.badge:focus {
   padding-left: 0.6em;
 }
 
-.badge-primary {
+.badge-danger {
   color: #212529;
   background-color: #FFCC00;
 }
 
-a.badge-primary:hover, a.badge-primary:focus {
+a.badge-danger:hover, a.badge-danger:focus {
   color: #212529;
   background-color: #cca300;
 }
 
-a.badge-primary:focus, a.badge-primary.focus {
+a.badge-danger:focus, a.badge-danger.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.5);
 }
@@ -6093,13 +6093,13 @@ a.close.disabled {
   vertical-align: text-top !important;
 }
 
-.bg-primary {
+.bg-danger {
   background-color: #FFCC00 !important;
 }
 
-a.bg-primary:hover, a.bg-primary:focus,
-button.bg-primary:hover,
-button.bg-primary:focus {
+a.bg-danger:hover, a.bg-danger:focus,
+button.bg-danger:hover,
+button.bg-danger:focus {
   background-color: #cca300 !important;
 }
 
@@ -9263,11 +9263,11 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
-.text-primary {
+.text-danger {
   color: #FFCC00 !important;
 }
 
-a.text-primary:hover, a.text-primary:focus {
+a.text-danger:hover, a.text-danger:focus {
   color: #b38f00 !important;
 }
 

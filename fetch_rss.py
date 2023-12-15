@@ -10,7 +10,7 @@ def news_feed_html():
     html_content = ""
     print('printing news:')
     subject = 'Ekonomi'
-    for item in feed.entries:
+    for item in feed.entries[0:3]:
         title = item.title
         length = len(item.title)
         source_url = 'google.com'
@@ -23,7 +23,7 @@ def news_feed_html():
             <img class="img-fluid h-100" src="{image_src}" style="object-fit: cover;">
             <div class="overlay">
                 <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">{subject}</a>
+                    <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2">{subject}</a>
                     <a class="text-white">{date}</a>
                 </div>
                 <a class="h2 m-0 text-white text-uppercase font-weight-bold" href={href}>{title}</a>
