@@ -32,6 +32,18 @@ class User(UserMixin):
 
     def is_admin(self):
         return self.role == 'admin'
+    
+    def comments(self):
+        query = 'SELECT * FROM COMMENTS WHERE user_id = %s'
+        cursor.execute(query, (self.id,))
+        return cursor.fetchall()
+    
+class Comment:
+    def __init__(self, id, user_id, content, created_at):
+        self.id = id
+        self.user_id = user_id
+        self.content = content
+        self.created_at = created_at
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -78,12 +90,16 @@ def delete_user_by_id(user_id):
 @app.route("/")
 def main_page():
     news_html_content = news_feed_html()
-    if current_user.is_authenticated:
-        return render_template('index.html',news_html_content=news_html_content,username=current_user.username)
-    else:
-        return render_template('index.html',news_html_content=news_html_content,username='guest')
-    
 
+    #Fetch comments for the current user
+    user_comments = current_user.comments() if current_user.is_authenticated else []
+
+    if current_user.is_authenticated:
+        return render_template('index.html',news_html_content=news_html_content,username=current_user.username, comment=user_comments)
+    else:
+        return render_template('index.html',news_html_content=news_html_content,username='guest', comments=user_comments)
+        
+        
 @app.route("/login.html", methods = ['POST', 'GET'])
 def login_page():
     if current_user.is_authenticated:
@@ -193,3 +209,20 @@ def delete_user(user_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/submit_comment', methods=['POST'])
+@login_required
+def submit_comment():
+    comment_content = request.form.get('comment')
+
+    if comment_content:
+        query = 'INSERT INTO comments (user_id, content) VALUES (%s, %s)'
+        cursor.execute(query, (current_user.id, comment_content))
+        mysql.commit()
+        flash('Comment submitted successfully!', 'success')
+    else:
+        flash('Comment cannot be empty!', 'error')
+    
+    return redirect(url_for('main_page'))
+
+    
