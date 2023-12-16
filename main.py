@@ -9,7 +9,7 @@ app = Flask("cs437-project")
 
 app.config['SECRET_KEY'] = 'bro_cs437_is_cool'  # Change this to a random secret key
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'login_page'
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:CS437.isthebest@localhost/turkishdb"
 app.config['MYSQL_HOST'] = 'localhost'
@@ -24,15 +24,19 @@ mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_
 cursor = mysql.cursor()
 
 class User(UserMixin):
-    def __init__(self, id, username, password):
+    def __init__(self, id, username, password, role='user'):
         self.id = id
         self.username = username
         self.password = password
+        self.role = role  # Add a role attribute
+
+    def is_admin(self):
+        return self.role == 'admin'
 
 @login_manager.user_loader
 def load_user(user_id):
     user_data = get_user_by_id(user_id)
-    return User(user_data[0], user_data[1], user_data[2])
+    return User(user_data[0], user_data[1], user_data[2], role=user_data[3])
 
 def get_user_by_username(username):
     try:
@@ -53,6 +57,22 @@ def get_user_by_id(user_id):
     cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))
     user_data = cursor.fetchone()
     return user_data
+
+
+def get_all_users():
+    query = 'SELECT * FROM users'
+    cursor.execute(query)
+    users = cursor.fetchall()
+
+    return users
+
+# Function to delete a user by user ID
+def delete_user_by_id(user_id):
+
+    query = 'DELETE FROM users WHERE id = %s'
+    cursor.execute(query, (user_id,))
+
+    mysql.commit()
 
 
 @app.route("/")
@@ -76,13 +96,17 @@ def login_page():
         user_data = get_user_by_username(username)
 
         if user_data and check_password_hash(user_data[2], password):
-            user = User(user_data[0], user_data[1], user_data[2])
+            user = User(user_data[0], user_data[1], user_data[2],user_data[3])
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('main_page'))
         else:
             flash('Invalid username or password', 'error')
-    return render_template('login.html')
+    
+    if current_user.is_authenticated:
+        return render_template('login.html',username=current_user.username)
+    else:
+        return render_template('login.html',username='guest')
 
 @app.route("/sign-up.html", methods = ['POST', 'GET'])
 def sign_up_page():
@@ -98,7 +122,12 @@ def sign_up_page():
             flash("Passwords do not match!", 'error')
 
             return redirect(url_for('sign_up_page'))
-        
+        if(get_user_by_username(username) != None):
+
+            flash("Username is already in use!", 'error')
+
+            return redirect(url_for('sign_up_page'))
+
         hashed_password = generate_password_hash(password, method='pbkdf2:md5')
 
         cursor.execute('INSERT INTO users (username, password) VALUES (%s, %s)', (username, hashed_password))
@@ -108,19 +137,42 @@ def sign_up_page():
 
         return redirect(url_for('login_page'))
         
-    return render_template('sign-up.html')
+    if current_user.is_authenticated:
+        return render_template('sign-up.html',username=current_user.username)
+    else:
+        return render_template('sign-up.html',username='guest')
+
+@app.route('/admin')
+@login_required
+def admin():
+    if not current_user.is_admin():
+        # Redirect to a different page or show an error message
+        return render_template('access_denied.html')
+
+    users = get_all_users() 
+    print(users)
+    return render_template('admin.html',users = users)
 
 @app.route("/category.html")
 def category_page():
-    return render_template('category.html')
+    if current_user.is_authenticated:
+        return render_template('category.html',username=current_user.username)
+    else:
+        return render_template('category.html',username='guest')
 
 @app.route("/contact.html")
 def contact_page():
-    return render_template('contact.html')
+    if current_user.is_authenticated:
+        return render_template('contact.html',username=current_user.username)
+    else:
+        return render_template('contact.html',username='guest')
 
 @app.route("/single.html")
 def single_news_page():
-    return render_template('single.html')
+    if current_user.is_authenticated:
+        return render_template('single.html',username=current_user.username)
+    else:
+        return render_template('single.html',username='guest')
 
 @app.route('/logout')
 @login_required
@@ -128,6 +180,16 @@ def logout():
     logout_user()
     flash('Logout successful!', 'success')
     return redirect(url_for('main_page'))
+
+
+@app.route('/delete_user/<int:user_id>', methods=['POST'])
+@login_required
+def delete_user(user_id):
+    if not current_user.is_admin():
+        return render_template('access_denied.html')
+    
+    delete_user_by_id(user_id)
+    return redirect(url_for('admin'))
 
 if __name__ == '__main__':
     app.run(debug=True)
