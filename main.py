@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from fetch_rss import news_feed_html
-import MySQLdb
+import pymysql
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -14,11 +14,11 @@ login_manager.login_view = 'login_page'
 #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:CS437.isthebest@localhost/turkishdb"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'turkishdb'
 
 #db = SQLAlchemy(app)
-mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
+mysql = pymysql.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
 
 cursor = mysql.cursor()
@@ -89,15 +89,15 @@ def delete_user_by_id(user_id):
 
 @app.route("/")
 def main_page():
-    news_html_content = news_feed_html()
+    main_html_content, secondary_html_content, remaining_html_content = news_feed_html()
 
     #Fetch comments for the current user
     user_comments = current_user.comments() if current_user.is_authenticated else []
 
     if current_user.is_authenticated:
-        return render_template('index.html',news_html_content=news_html_content,username=current_user.username, comment=user_comments)
+        return render_template('index.html',main_html_content=main_html_content,secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content, username=current_user.username, comment=user_comments)
     else:
-        return render_template('index.html',news_html_content=news_html_content,username='guest', comments=user_comments)
+        return render_template('index.html',main_html_content=main_html_content, secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content,username='guest', comments=user_comments)
         
         
 @app.route("/login.html", methods = ['POST', 'GET'])
