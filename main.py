@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from fetch_rss import news_feed_html, get_search_results
-import pymysql
+import MySQLdb
+import pymysql #nusret
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -11,15 +12,18 @@ app.config['SECRET_KEY'] = 'bro_cs437_is_cool'  # Change this to a random secret
 login_manager = LoginManager(app)
 login_manager.login_view = 'login_page'
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:CS437.isthebest@localhost/turkishdb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:CS437.isthebest@localhost/turkishdb"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '' # nusret
+app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'
 app.config['MYSQL_DB'] = 'turkishdb'
 
 #db = SQLAlchemy(app)
-mysql = pymysql.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
+mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
+
+#mysql = pymysql.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])  # nusret
 
 cursor = mysql.cursor()
 
