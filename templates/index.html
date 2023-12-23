@@ -115,12 +115,42 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
+                    <input id="searchInput" type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
-                        <button class="input-group-text bg-danger text-dark border-0 px-3"><i
+                        <button id="searchButton" class="input-group-text bg-danger text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
+                <script>
+                    // Get the search button and input element by their IDs
+                    var searchButton = document.getElementById('searchButton');
+                    var searchInput = document.getElementById('searchInput');
+
+                    function performSearch() {
+                        var keyword = searchInput.value;
+                        console.log('Search keyword:', keyword);
+            
+                        // Set the new location to search-result.html
+                        window.location.href = 'search-result/'+keyword;
+                    }
+                    // Attach an event listener to the search button
+                    searchButton.addEventListener('click', function () {
+                        // Retrieve the input value
+                        var keyword = searchInput.value;
+            
+                        // Perform desired action, for example, log the keyword to the console
+                        console.log('Search keyword:', keyword);
+            
+                        // You can add more logic here, such as initiating a search using the keyword
+                    });
+
+                      // Event listener for the Enter key press
+                    searchInput.addEventListener('keypress', function (event) {
+                        if (event.key === 'Enter') {
+                            performSearch();
+                        }
+                    });
+                </script>
             </div>
         </nav>
     </div>
@@ -181,61 +211,11 @@
                 <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
             </div>
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-2.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-3.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-4.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-5.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
+                {% if remaining_html_content %}
+                    {{ remaining_html_content|safe }}
+                {% else %}
+                    <p>No news available at the moment.</p>
+                {% endif %}
             </div>
         </div>
     </div>

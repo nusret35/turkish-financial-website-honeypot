@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
-from fetch_rss import news_feed_html
+from fetch_rss import news_feed_html, get_search_results
 import pymysql
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -80,7 +80,7 @@ def get_all_users():
 
 # Function to delete a user by user ID
 def delete_user_by_id(user_id):
-
+    
     query = 'DELETE FROM users WHERE id = %s'
     cursor.execute(query, (user_id,))
 
@@ -98,7 +98,16 @@ def main_page():
         return render_template('index.html',main_html_content=main_html_content,secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content, username=current_user.username, comment=user_comments)
     else:
         return render_template('index.html',main_html_content=main_html_content, secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content,username='guest', comments=user_comments)
-        
+
+
+@app.route('/search-result/<keyword>', methods=['GET'])
+def search_result_page(keyword):
+    results_html_content = get_search_results(keyword)
+    if current_user.is_authenticated:
+        return render_template('search-result.html', username=current_user.username, keyword=keyword, results_html_content=results_html_content)
+    else:
+        return render_template('search-result.html', username='guest', keyword=keyword, results_html_content=results_html_content)
+
         
 @app.route("/login.html", methods = ['POST', 'GET'])
 def login_page():
@@ -189,6 +198,7 @@ def single_news_page():
         return render_template('single.html',username=current_user.username)
     else:
         return render_template('single.html',username='guest')
+    
 
 @app.route('/logout')
 @login_required
@@ -206,6 +216,7 @@ def delete_user(user_id):
     
     delete_user_by_id(user_id)
     return redirect(url_for('admin'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
