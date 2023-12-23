@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="static/img/favicon.ico" rel="icon">
+    <link href="../static/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,7 +22,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="static/styles/style.css" type= "text/css" rel="stylesheet">
+    <link href="../static/styles/style.css" type= "text/css" rel="stylesheet">
     <style>
 
 
@@ -108,12 +108,42 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
+                    <input id="searchInput" type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
-                        <button class="input-group-text bg-danger text-dark border-0 px-3"><i
+                        <button id="searchButton" class="input-group-text bg-danger text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
+                <script>
+                    // Get the search button and input element by their IDs
+                    var searchButton = document.getElementById('searchButton');
+                    var searchInput = document.getElementById('searchInput');
+
+                    function performSearch() {
+                        var keyword = searchInput.value;
+                        console.log('Search keyword:', keyword);
+            
+                        // Set the new location to search-result.html
+                        window.location.href = '/search-result/'+keyword;
+                    }
+                    // Attach an event listener to the search button
+                    searchButton.addEventListener('click', function () {
+                        // Retrieve the input value
+                        var keyword = searchInput.value;
+            
+                        // Perform desired action, for example, log the keyword to the console
+                        console.log('Search keyword:', keyword);
+            
+                        // You can add more logic here, such as initiating a search using the keyword
+                    });
+
+                      // Event listener for the Enter key press
+                    searchInput.addEventListener('keypress', function (event) {
+                        if (event.key === 'Enter') {
+                            performSearch();
+                        }
+                    });
+                </script>
             </div>
         </nav>
     </div>
@@ -362,7 +392,7 @@
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
                 <div class="row">
                     <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="static/img/news-110x110-1.jpg" alt=""></a>
+                        <a href=""><img class="w-100" src="../static/img/news-110x110-1.jpg" alt=""></a>
                     </div>
                     <div class="col-4 mb-3">
                         <a href=""><img class="w-100" src="static/img/news-110x110-2.jpg" alt=""></a>

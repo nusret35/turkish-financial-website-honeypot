@@ -98,7 +98,7 @@ def get_search_results(keyword):
             html_content += f"""
             <div class="col-lg-6">
                 <div class="position-relative mb-3">
-                    <img class="img-fluid w-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+                    <img class="img-fluid w-100" src="{image_src}" style="object-fit: cover;">
                     <div class="bg-white border border-top-0 p-4">
                         <div class="mb-2">
                             <a class="badge badge-danger text-uppercase font-weight-semi-bold p-2 mr-2"

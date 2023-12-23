@@ -80,7 +80,7 @@ def get_all_users():
 
 # Function to delete a user by user ID
 def delete_user_by_id(user_id):
-    
+
     query = 'DELETE FROM users WHERE id = %s'
     cursor.execute(query, (user_id,))
 
