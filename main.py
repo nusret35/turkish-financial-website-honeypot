@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask("cs437-project")
 
-#app.config['SECRET_KEY'] = 'bro_cs437_is_cool'  # Change this to a random secret key
+app.config['SECRET_KEY'] = 'bro_cs437_is_cool'  # Change this to a random secret key
 login_manager = LoginManager(app)
 login_manager.login_view = 'login_page'
 
