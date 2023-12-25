@@ -36,22 +36,30 @@ class User(UserMixin):
     def is_admin(self):
         return self.role == 'admin'
     
-    def comments(self):
-        query = 'SELECT * FROM COMMENTS WHERE user_id = %s'
-        cursor.execute(query, (self.id,))
-        return cursor.fetchall()
+    def get_comments(self):
+        query = 'SELECT * FROM comments WHERE username = %s'
+        cursor.execute(query, (self.username,))
+        comment_data = cursor.fetchall()
+
+        comments = [Comment(*row) for row in comment_data]
+        return comments
     
 class Comment:
-    def __init__(self, id, user_id, content, created_at):
+    def __init__(self, id, username, name, email, website, content, created_at):
         self.id = id
-        self.user_id = user_id
+        self.username = username
+        self.name = name
+        self.email = email
+        self.website = website
         self.content = content
         self.created_at = created_at
+
 
 @login_manager.user_loader
 def load_user(user_id):
     user_data = get_user_by_id(user_id)
     return User(user_data[0], user_data[1], user_data[2], role=user_data[3])
+
 
 def get_user_by_username(username):
     try:
@@ -94,14 +102,15 @@ def delete_user_by_id(user_id):
 def main_page():
     main_html_content, secondary_html_content, remaining_html_content = news_feed_html()
 
-    #Fetch comments for the current user
-    user_comments = current_user.comments() if current_user.is_authenticated else []
+    # Fetch comments for the current user
+    user_comments = current_user.get_comments() if current_user.is_authenticated else []
 
     if current_user.is_authenticated:
-        return render_template('index.html',main_html_content=main_html_content,secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content, username=current_user.username, comment=user_comments)
+        return render_template('single.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
+                               remaining_html_content=remaining_html_content, username=current_user.username, comments=user_comments)
     else:
-        return render_template('index.html',main_html_content=main_html_content, secondary_html_content=secondary_html_content, remaining_html_content= remaining_html_content,username='guest', comments=user_comments)
-
+        return render_template('single.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
+                               remaining_html_content=remaining_html_content, username='guest', comments=user_comments)
 
 @app.route('/search-result/<keyword>', methods=['GET'])
 def search_result_page(keyword):
@@ -221,22 +230,33 @@ def delete_user(user_id):
     return redirect(url_for('admin'))
 
 
+@app.route('/add_comment', methods=['POST'])
+@login_required
+def add_comment():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        current_route = request.form.get('current_route')
+        name = request.form.get('name')
+        email = request.form.get('email')
+        website = request.form.get('website')
+        message = request.form.get('message')
+
+        if not message:
+            flash('Comment content is required!', 'error')
+            return redirect(current_route)
+
+        # Insert the comment into the database
+        query = 'INSERT INTO comments (username, name, email, website, content) VALUES (%s, %s, %s, %s, %s)'
+        cursor.execute(query, (username, name, email, website, message))
+        mysql.commit()
+
+        flash('Comment added successfully!', 'success')
+
+    return redirect(request.referrer)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
-@app.route('/submit_comment', methods=['POST'])
-@login_required
-def submit_comment():
-    comment_content = request.form.get('comment')
-
-    if comment_content:
-        query = 'INSERT INTO comments (user_id, content) VALUES (%s, %s)'
-        cursor.execute(query, (current_user.id, comment_content))
-        mysql.commit()
-        flash('Comment submitted successfully!', 'success')
-    else:
-        flash('Comment cannot be empty!', 'error')
-    
-    return redirect(url_for('main_page'))
 
     
