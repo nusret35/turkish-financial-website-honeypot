@@ -45,14 +45,13 @@ class User(UserMixin):
         return comments
     
 class Comment:
-    def __init__(self, id, username, name, email, website, content, created_at):
+    def __init__(self, id, username, content, created_at, news_link):
         self.id = id
         self.username = username
-        self.name = name
-        self.email = email
-        self.website = website
         self.content = content
         self.created_at = created_at
+        self.news_link = news_link
+
 
 
 @login_manager.user_loader
@@ -203,15 +202,7 @@ def contact_page():
         return render_template('contact.html',username=current_user.username)
     else:
         return render_template('contact.html',username='guest')
-
-@app.route("/single.html")
-def single_news_page():
-    if current_user.is_authenticated:
-        return render_template('single.html',username=current_user.username)
-    else:
-        return render_template('single.html',username='guest')
     
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -234,25 +225,44 @@ def delete_user(user_id):
 @login_required
 def add_comment():
     if request.method == 'POST':
-        username = request.form.get('username')
         current_route = request.form.get('current_route')
-        name = request.form.get('name')
-        email = request.form.get('email')
-        website = request.form.get('website')
         message = request.form.get('message')
+        news_link = request.form.get('news_link')
 
         if not message:
             flash('Comment content is required!', 'error')
             return redirect(current_route)
 
-        # Insert the comment into the database
-        query = 'INSERT INTO comments (username, name, email, website, content) VALUES (%s, %s, %s, %s, %s)'
-        cursor.execute(query, (username, name, email, website, message))
+        # Process and store the comment data in the database, including the news link
+        query = 'INSERT INTO comments (username, content, news_link) VALUES (%s, %s, %s)'
+        cursor.execute(query, (current_user.username, message, news_link))
         mysql.commit()
 
-        flash('Comment added successfully!', 'success')
+        flash('Comment submitted successfully!', 'success')
 
-    return redirect(request.referrer)
+        # Redirect back to the original news article page
+        return redirect(request.referrer)
+
+@app.route("/single.html")
+def single_news_page(news_link="/single.html"):
+    # Fetch comments related to the current news link
+    query = 'SELECT * FROM comments WHERE news_link = %s'
+    cursor.execute(query, (news_link,))
+    comment_data = cursor.fetchall()
+
+    # Create Comment objects from the retrieved data
+    comments = [Comment(*row) for row in comment_data]
+
+    # Pass the current link to the template
+    current_news_link = request.path
+
+    if current_user.is_authenticated:
+        return render_template('single.html', username=current_user.username, comments=comments, current_news_link=current_news_link)
+    else:
+        return render_template('single.html', username='guest', comments=comments, current_news_link=current_news_link)
+
+
+
 
 
 if __name__ == '__main__':

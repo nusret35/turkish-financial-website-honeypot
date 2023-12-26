@@ -259,19 +259,22 @@
                         </div>
                         <div class="bg-white border border-top-0 p-4">
                             {% for comment in comments %}
-                            <div class="media mb-4">
-                                <img src="static/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">{{ comment.username }}</a> <small><i>{{ comment.created_at.strftime('%d %b %Y') }}</i></small></h6>
-                                    <p>{{ comment.content }}</p>
-                                </div>
-                            </div>
+                                {% if comment.news_link == current_news_link %}
+                                    <div class="media mb-4">
+                                        <img src="static/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <div class="media-body">
+                                            <h6><a class="text-secondary font-weight-bold" href="">{{ comment.username }}</a> <small><i>{{ comment.created_at.strftime('%d %b %Y') }}</i></small></h6>
+                                            <p>{{ comment.content }}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
                     <!-- Comment List End -->
 
                     <!-- Comment Form Start -->
+                    {% if current_user.is_authenticated %}
                     <div class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
@@ -281,29 +284,11 @@
                                 <!-- Add hidden input fields to store username and current route -->
                                 <input type="hidden" name="username" value="{{ current_user.username }}">
                                 <input type="hidden" name="current_route" value="{{ request.path }}">
-
-                                <div class="form-row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="name">Name *</label>
-                                            <input type="text" class="form-control" id="name" name="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="email">Email *</label>
-                                            <input type="email" class="form-control" id="email" name="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website</label>
-                                    <input type="url" class="form-control" id="website" name="website">
-                                </div>
-
+                                <input type="hidden" name="news_link" value="{{ current_news_link }}">
+                            
                                 <div class="form-group">
                                     <label for="message">Message *</label>
-                                    <textarea id="message" cols="30" rows="5" class="form-control" name="message"></textarea>
+                                    <textarea id="message" cols="30" rows="5" class="form-control" name="message" required></textarea>
                                 </div>
                                 <div class="form-group mb-0">
                                     <input type="submit" value="Leave a comment" class="btn btn-danger font-weight-semi-bold py-2 px-3">
@@ -311,6 +296,7 @@
                             </form>
                         </div>
                     </div>
+                    {% endif %}
                     <!-- Comment Form End -->
                 </div>
 
