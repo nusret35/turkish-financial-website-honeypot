@@ -189,6 +189,7 @@
                                     const params = new URLSearchParams(window.location.search);
                                     const title = params.get('title');
                                     const description = params.get('description');
+                                    const content = params.get('content');
                                     const image_src = params.get('image_src');
                                     const source_url = params.get('source_url'); // Corrected this line
                                     const redirected_url = source_url ? "http://127.0.0.1:5000/redirect?url=" + source_url : '';
@@ -196,7 +197,8 @@
                                     const subject = params.get('subject');
                                     const outputSubjectAndDate = document.querySelector('.subject-and-date');
                                     const outputImage = document.querySelector('.news-image');
-                                    const sourceUrlContainer = document.querySelector('.url')
+                                    const sourceUrlContainer = document.querySelector('.url');
+                                    const contentUrlContainer = document.querySelector('.news-content');
                                     if (outputImage) {
                                         outputImage.innerHTML = `<img class="img-fluid w-100" src="${image_src}" style="object-fit: cover;">`;
                                     }
@@ -206,25 +208,21 @@
                                     if (sourceUrlContainer) {
                                         sourceUrlContainer.innerHTML = source_url ? `<div style="display: flex;"><p>Haberin kaynağına <a href="${redirected_url}">buradan erişebilirsiniz</a></p></div>` : '';
                                     }
+                                    if (content) {
+                                        console.log(content);
+                                        contentUrlContainer.textContent= content;
+                                    }
+                                    
                                     document.addEventListener("DOMContentLoaded", function () {
                                         getParams();
                                     });
                                 }
                                 window.onload = getParams;
                             </script> 
+                            <p class="news-content"></p>
                             <div class="url"></div>                              
                             <h3 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h3>
                             <img class="img-fluid w-50 float-left mr-4 mb-2" src="static/img/news-800x500-1.jpg">
-                            <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                duo tempor sea kasd clita ipsum et.</p>
                             <h5 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h5>
                             <img class="img-fluid w-50 float-right mr-4 mb-2" src="static/img/news-800x500-2.jpg">
                             <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
