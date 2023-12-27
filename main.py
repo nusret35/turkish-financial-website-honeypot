@@ -105,10 +105,10 @@ def main_page():
     user_comments = current_user.get_comments() if current_user.is_authenticated else []
 
     if current_user.is_authenticated:
-        return render_template('single.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
+        return render_template('index.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
                                remaining_html_content=remaining_html_content, username=current_user.username, comments=user_comments)
     else:
-        return render_template('single.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
+        return render_template('index.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
                                remaining_html_content=remaining_html_content, username='guest', comments=user_comments)
 
 @app.route('/search-result/<keyword>', methods=['GET'])
