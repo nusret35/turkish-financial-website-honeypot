@@ -190,29 +190,29 @@
                                     const title = params.get('title');
                                     const description = params.get('description');
                                     const image_src = params.get('image_src');
-                                    const source_url = params.get('source_url');
+                                    const source_url = params.get('source_url'); // Corrected this line
+                                    const redirected_url = source_url ? "http://127.0.0.1:5000/redirect?url=" + source_url : '';
                                     const date = params.get('date');
                                     const subject = params.get('subject');
                                     const outputSubjectAndDate = document.querySelector('.subject-and-date');
                                     const outputImage = document.querySelector('.news-image');
+                                    const sourceUrlContainer = document.querySelector('.url')
                                     if (outputImage) {
                                         outputImage.innerHTML = `<img class="img-fluid w-100" src="${image_src}" style="object-fit: cover;">`;
                                     }
                                     if (outputSubjectAndDate) {
                                      outputSubjectAndDate.innerHTML = `<a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${subject}</a><a class="text-body" href="">${date}</a> <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${title}</h1><p>${description}</p>`;
                                     }
+                                    if (sourceUrlContainer) {
+                                        sourceUrlContainer.innerHTML = source_url ? `<div style="display: flex;"><p>Haberin kaynağına <a href="${redirected_url}">buradan erişebilirsiniz</a></p></div>` : '';
+                                    }
                                     document.addEventListener("DOMContentLoaded", function () {
                                         getParams();
                                     });
                                 }
                                 window.onload = getParams;
-                            </script>                            
-                            <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
-                                vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
-                                nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
-                                ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
-                                clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
-                                justo dolore sit invidunt.</p>
+                            </script> 
+                            <div class="url"></div>                              
                             <h3 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h3>
                             <img class="img-fluid w-50 float-left mr-4 mb-2" src="static/img/news-800x500-1.jpg">
                             <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor

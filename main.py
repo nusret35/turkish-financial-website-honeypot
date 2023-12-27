@@ -261,8 +261,12 @@ def single_news_page(news_link="/single.html"):
     else:
         return render_template('single.html', username='guest', comments=comments, current_news_link=current_news_link)
 
-
-
+@app.route("/redirect")
+def redirect_page():
+    if current_user.is_authenticated:
+        return render_template('redirect.html', username=current_user.username)
+    else:
+        return render_template('redirect.html', username='guest')
 
 
 if __name__ == '__main__':

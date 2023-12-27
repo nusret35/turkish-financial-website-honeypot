@@ -14,7 +14,7 @@ def news_feed_html():
     main_news_item = feed.entries[0]
     title = main_news_item.title
     length = len(main_news_item.title)
-    source_url = 'google.com'
+    source_url = main_news_item.link
     description = main_news_item.description[length+1:]
     image_src = main_news_item.links[0]['href']
     date = main_news_item.published
@@ -37,7 +37,7 @@ def news_feed_html():
     for item in feed.entries[1:5]:
         title = item.title
         length = len(item.title)
-        source_url = 'google.com'
+        source_url = item.link
         description = item.description[length+1:]
         image_src = item.links[0]['href']
         date = item.published
@@ -61,7 +61,7 @@ def news_feed_html():
     for item in feed.entries[5:]:
         title = item.title
         length = len(item.title)
-        source_url = 'google.com'
+        source_url = item.link
         description = item.description[length+1:]
         image_src = item.links[0]['href']
         date = item.published
@@ -90,7 +90,7 @@ def get_search_results(keyword):
             title = item.title
             length = len(item.title)
             subject = 'Ekonomi'
-            source_url = 'google.com'
+            source_url = item.link
             description = item.description[length+1:]
             image_src = item.links[0]['href']
             date = item.published
