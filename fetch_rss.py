@@ -40,7 +40,7 @@ def news_feed_html():
         length = len(item.title)
         source_url = item.link
         description = item.description[length+1:]
-        content = item.content[0]['value']
+        content = main_news_item.content[0]['value'][:7000]
         image_src = item.links[0]['href']
         date = item.published
         href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
@@ -65,7 +65,7 @@ def news_feed_html():
         length = len(item.title)
         source_url = item.link
         description = item.description[length+1:]
-        content = item.content[0]['value']
+        content = item.content[0]['value'][:6000]
         image_src = item.links[0]['href']
         date = item.published
         href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
@@ -95,7 +95,7 @@ def get_search_results(keyword):
             subject = 'Ekonomi'
             source_url = item.link
             description = item.description[length+1:]
-            content = item.content[0]['value']
+            content = item.content[0]['value'][:7000]
             image_src = item.links[0]['href']
             date = item.published
             href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"

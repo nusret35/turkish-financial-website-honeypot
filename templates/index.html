@@ -125,13 +125,16 @@
                     // Get the search button and input element by their IDs
                     var searchButton = document.getElementById('searchButton');
                     var searchInput = document.getElementById('searchInput');
+            
+
+                    
 
                     function performSearch() {
                         var keyword = searchInput.value;
                         console.log('Search keyword:', keyword);
             
                         // Set the new location to search-result.html
-                        window.location.href = 'search-result/'+keyword;
+                        window.location.href = 'search-result?keyword='+keyword;
                     }
                     // Attach an event listener to the search button
                     searchButton.addEventListener('click', function () {

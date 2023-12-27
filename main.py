@@ -111,13 +111,15 @@ def main_page():
         return render_template('index.html', main_html_content=main_html_content, secondary_html_content=secondary_html_content,
                                remaining_html_content=remaining_html_content, username='guest', comments=user_comments)
 
-@app.route('/search-result/<keyword>', methods=['GET'])
-def search_result_page(keyword):
+@app.route('/search-result', methods=['GET'])
+def search_result_page():
+    keyword = request.args.get('keyword', '')
     results_html_content = get_search_results(keyword)
+    
     if current_user.is_authenticated:
-        return render_template('search-result.html', username=current_user.username, keyword=keyword, results_html_content=results_html_content)
+        return render_template('search-result.html', username=current_user.username, results_html_content=results_html_content)
     else:
-        return render_template('search-result.html', username='guest', keyword=keyword, results_html_content=results_html_content)
+        return render_template('search-result.html', username='guest', results_html_content=results_html_content)
 
         
 @app.route("/login.html", methods = ['POST', 'GET'])
