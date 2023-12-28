@@ -191,6 +191,21 @@ def admin():
     print(users)
     return render_template('admin.html',users = users)
 
+
+@app.route('/admin/addUser', methods = ['POST', 'GET'])
+@login_required
+def admin():
+    if not current_user.is_admin():
+        # Redirect to a different page or show an error message
+        return render_template('access_denied.html')
+
+    users = get_all_users() 
+    print(users)
+    return render_template('admin.html',users = users)
+
+
+
+
 @app.route("/category.html")
 def category_page():
     if current_user.is_authenticated:
