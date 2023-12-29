@@ -42,6 +42,14 @@
     left: 10%;
 }
 
+.comments_div {
+    position: absolute;
+    width: 40%;
+    top:60%;
+    left: 10%;
+}
+
+
 .users_add_div {
     padding: 20px;
     position: absolute;
@@ -133,6 +141,32 @@
         </tbody>
     </table>
     </div>
+
+    <div class="comments_div">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Comment</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td>{{ comment[1] }}</td>
+                        <td>{{ comment[2] }}</td>
+                        <td>
+                            <form method="post" action="{{ url_for('delete_user', user_id=comment[0])}}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
     <div class="users_add_div">
         <h2>Add User</h2>
         <form action="/admin/addUser" method="post">
@@ -144,6 +178,9 @@
             <br/>
             <input type="password" name="password" required>
             <br/>
+            <label for="password">Role:</label>
+            <br/>
+            <input type="text" name="role" required>
             <br/>
             <button type="submit">Add User</button>
         </form>

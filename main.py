@@ -88,6 +88,13 @@ def get_all_users():
 
     return users
 
+def get_all_comments():
+    query = 'SELECT * FROM comments'
+    cursor.execute(query)
+    comments = cursor.fetchall()
+
+    return comments
+
 # Function to delete a user by user ID
 def delete_user_by_id(user_id):
 
@@ -188,22 +195,38 @@ def admin():
         return render_template('access_denied.html')
 
     users = get_all_users() 
-    print(users)
-    return render_template('admin.html',users = users)
+    comments = get_all_comments() 
+    return render_template('admin.html',users = users, comments = comments)
 
 
-@app.route('/admin/addUser', methods = ['POST', 'GET'])
+@app.route('/admin/addUser', methods = ['POST'])
 @login_required
-def admin():
+def admin_add():
     if not current_user.is_admin():
         # Redirect to a different page or show an error message
         return render_template('access_denied.html')
+    
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        role = request.form.get('role')
+        if not username or not password:
+            flash('Both username and password are required!', 'error')    
+            return
 
-    users = get_all_users() 
-    print(users)
-    return render_template('admin.html',users = users)
+        if(get_user_by_username(username) != None):
 
+            flash("Username is already in use!", 'error')
 
+            return
+
+        hashed_password = generate_password_hash(password, method='pbkdf2:md5')
+
+        cursor.execute('INSERT INTO users (username, password,role) VALUES (%s, %s,%s)', (username, hashed_password, role))
+        mysql.commit()
+        flash('User registered successfully!', 'success')
+
+    return redirect(url_for('admin'))
 
 
 @app.route("/category.html")
