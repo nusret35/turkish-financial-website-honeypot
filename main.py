@@ -4,6 +4,28 @@ import pymysql #nusret
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import logging
+
+class StructuredFormatter(logging.Formatter):
+    def format(self, record):
+        log_data = {
+            'IP': request.remote_addr,
+            'Page': request.path,
+            'Log': record.msg,
+            'Date': self.formatTime(record, self.datefmt),
+        }
+        return str(log_data)
+
+logging.basicConfig(level=logging.DEBUG,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+                    handlers=[
+                        logging.FileHandler('app.log'),  # Log to a file
+                        logging.StreamHandler(),         # Log to the console
+                    ])
+
+# Set the custom formatter for all handlers
+for handler in logging.root.handlers:
+    handler.setFormatter(StructuredFormatter())
+
 
 app = Flask("cs437-project")
 
@@ -199,7 +221,9 @@ def sign_up_page():
 @login_required
 def admin():
     if not current_user.is_admin():
-        # Redirect to a different page or show an error message
+        
+        app.logger.info("User try to reach forbidden page.")
+
         return render_template('access_denied.html')
 
     users = get_all_users() 
@@ -211,7 +235,8 @@ def admin():
 @login_required
 def admin_add():
     if not current_user.is_admin():
-        # Redirect to a different page or show an error message
+
+        app.logger.info("User try to reach forbidden page.")
         return render_template('access_denied.html')
     
     if request.method == "POST":
@@ -253,10 +278,18 @@ def contact_page():
 
 @app.route("/coins", methods=['POST', 'GET'])
 def coins_page():
-    search_query = request.form.get('search_query')
-    # Convert both the column value and search query to lowercase for case-insensitive search
-    cursor.execute(f"SELECT id, name FROM coins WHERE LOWER(name) LIKE LOWER('%{search_query}%')")
-    search_results = cursor.fetchall()
+    if request.method == "POST":
+        search_query = request.form.get('search_query')
+        the_query = f"SELECT url FROM coins WHERE name = '{search_query}'"
+
+        app.logger.info(f"Query executed: {the_query}")
+        cursor.execute(the_query)
+        search_results = cursor.fetchall()
+
+        if search_results:
+            return redirect(search_results[0][0])
+        else:
+            return "Coin not found"
 
     cursor.execute("SELECT id, name FROM coins")
     all_coins = cursor.fetchall()
@@ -280,6 +313,7 @@ def logout():
 @login_required
 def delete_user(user_id):
     if not current_user.is_admin():
+        app.logger.info("User try to reach forbidden page.")
         return render_template('access_denied.html')
     
     delete_user_by_id(user_id)
@@ -289,6 +323,7 @@ def delete_user(user_id):
 @login_required
 def delete_comment(comment_id):
     if not current_user.is_admin():
+        app.logger.info("User try to reach forbidden page.")
         return render_template('access_denied.html')
     
     delete_comment_by_id(comment_id)

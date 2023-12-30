@@ -35,10 +35,44 @@
         margin: 0;
     }
     .my-container{
+        position: relative;
         width: 100%;
         height:500px;
     }
-
+    .searchbar-bar{
+        position: relative;
+        margin: 0%;
+        width: 80%;
+        height: 40px;
+    }
+    .searchbar-results{
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+        overflow-y: scroll;
+    }
+    .searchbar-button{
+        position: absolute;
+        width: 20%;
+        right: 0%;
+        height: 40px;
+    }
+    .form-place{
+        position: absolute;
+        top: 20%;
+        width: 50%;
+        left: 25%;
+        height: 400px;
+    }
+    #search-results {
+                border: 1px solid black;
+                padding: 10px;
+            }
+    .results-li{
+        color: black !important;
+    }
 
     </style>
 </head>
@@ -111,7 +145,7 @@
                             <a href="#" class="dropdown-item">Menu item 3</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                    <a href="/coins" class="nav-item nav-link active">Search Coin</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input id="searchInput" type="text" class="form-control border-0" placeholder="Keyword">
@@ -155,28 +189,21 @@
     </div>
     <!-- Navbar End -->
     <div class="my-container">
-        <title>Search Page</title>
-        <style>
-            #search-results {
-                margin-top: 10px;
-                border: 1px solid #ccc;
-                padding: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Search Bar</h1>
-        <form action="{{ url_for('coins_page') }}" method="POST">
-            <input type="text" name="search_query" id = "searchQuery" placeholder="Search...">
-            <input type="submit" value="Search">
-        </form>
-    
-        <div id="search-results">
+        <div class="form-place">
+
+            <h1>Search Coin</h1>
+            <form action="{{ url_for('coins_page') }}" method="POST">
+                <input type="text" name="search_query" id = "searchQuery" placeholder="Search..." class="searchbar-bar">
+                <input type="submit" value="Search" class="searchbar-button">
+            </form>
+            
+            <div id="search-results" class="searchbar-results">
                 <ul>
                     {% for coin in all_coins %}
-                        <li><a href="{coin[0]}">{{ coin[1] }}</a></li>
+                    <li ><a href="{coin[2]}" class="results-li">{{ coin[1] }}</a></li>
                     {% endfor %}
                 </ul>
+            </div>
         </div>
     </div>
 
