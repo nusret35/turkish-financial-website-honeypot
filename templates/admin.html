@@ -37,16 +37,24 @@
 
 .users_div {
     position: absolute;
+    border: #000000 solid 2px;
     width: 40%;
+    height: 300px;
     top:20%;
     left: 10%;
+    overflow-y: scroll;
 }
 
 .comments_div {
     position: absolute;
+    border: #000000 solid 2px;
+    position: absolute;
     width: 40%;
     top:60%;
     left: 10%;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -157,7 +165,7 @@
                         <td>{{ comment[1] }}</td>
                         <td>{{ comment[2] }}</td>
                         <td>
-                            <form method="post" action="{{ url_for('delete_user', user_id=comment[0])}}">
+                            <form method="post" action="{{ url_for('delete_comment', comment_id=comment[0])}}">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>

@@ -103,6 +103,14 @@ def delete_user_by_id(user_id):
 
     mysql.commit()
 
+# Function to delete a user by user ID
+def delete_comment_by_id(comment_id):
+
+    query = 'DELETE FROM comments WHERE id = %s'
+    cursor.execute(query, (comment_id,))
+
+    mysql.commit()
+
 
 @app.route("/")
 def main_page():
@@ -196,7 +204,7 @@ def admin():
 
     users = get_all_users() 
     comments = get_all_comments() 
-    return render_template('admin.html',users = users, comments = comments)
+    return render_template('admin.html',users = users, comments = comments, username=current_user.username)
 
 
 @app.route('/admin/addUser', methods = ['POST'])
@@ -242,7 +250,24 @@ def contact_page():
         return render_template('contact.html',username=current_user.username)
     else:
         return render_template('contact.html',username='guest')
+
+@app.route("/coins", methods=['POST', 'GET'])
+def coins_page():
+    search_query = request.form.get('search_query')
+    # Convert both the column value and search query to lowercase for case-insensitive search
+    cursor.execute(f"SELECT id, name FROM coins WHERE LOWER(name) LIKE LOWER('%{search_query}%')")
+    search_results = cursor.fetchall()
+
+    cursor.execute("SELECT id, name FROM coins")
+    all_coins = cursor.fetchall()
+
+    if current_user.is_authenticated:
+        return render_template('coins.html',username=current_user.username, all_coins=all_coins)
+    else:
+        return render_template('coins.html',username='guest',  all_coins=all_coins)
     
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -258,6 +283,15 @@ def delete_user(user_id):
         return render_template('access_denied.html')
     
     delete_user_by_id(user_id)
+    return redirect(url_for('admin'))
+
+@app.route('/delete_comment/<int:comment_id>', methods=['POST'])
+@login_required
+def delete_comment(comment_id):
+    if not current_user.is_admin():
+        return render_template('access_denied.html')
+    
+    delete_comment_by_id(comment_id)
     return redirect(url_for('admin'))
 
 
