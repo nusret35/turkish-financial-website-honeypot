@@ -4,6 +4,28 @@ import pymysql #nusret
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import logging
+
+class StructuredFormatter(logging.Formatter):
+    def format(self, record):
+        log_data = {
+            'IP': request.remote_addr,
+            'Page': request.path,
+            'Log': record.msg,
+            'Date': self.formatTime(record, self.datefmt),
+        }
+        return str(log_data)
+
+logging.basicConfig(level=logging.DEBUG,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+                    handlers=[
+                        logging.FileHandler('app.log'),  # Log to a file
+                        logging.StreamHandler(),         # Log to the console
+                    ])
+
+# Set the custom formatter for all handlers
+for handler in logging.root.handlers:
+    handler.setFormatter(StructuredFormatter())
+
 
 app = Flask("cs437-project")
 
@@ -88,11 +110,26 @@ def get_all_users():
 
     return users
 
+def get_all_comments():
+    query = 'SELECT * FROM comments'
+    cursor.execute(query)
+    comments = cursor.fetchall()
+
+    return comments
+
 # Function to delete a user by user ID
 def delete_user_by_id(user_id):
 
     query = 'DELETE FROM users WHERE id = %s'
     cursor.execute(query, (user_id,))
+
+    mysql.commit()
+
+# Function to delete a user by user ID
+def delete_comment_by_id(comment_id):
+
+    query = 'DELETE FROM comments WHERE id = %s'
+    cursor.execute(query, (comment_id,))
 
     mysql.commit()
 
@@ -184,12 +221,46 @@ def sign_up_page():
 @login_required
 def admin():
     if not current_user.is_admin():
-        # Redirect to a different page or show an error message
+        
+        app.logger.info("User try to reach forbidden page.")
+
         return render_template('access_denied.html')
 
     users = get_all_users() 
-    print(users)
-    return render_template('admin.html',users = users)
+    comments = get_all_comments() 
+    return render_template('admin.html',users = users, comments = comments, username=current_user.username)
+
+
+@app.route('/admin/addUser', methods = ['POST'])
+@login_required
+def admin_add():
+    if not current_user.is_admin():
+
+        app.logger.info("User try to reach forbidden page.")
+        return render_template('access_denied.html')
+    
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        role = request.form.get('role')
+        if not username or not password:
+            flash('Both username and password are required!', 'error')    
+            return
+
+        if(get_user_by_username(username) != None):
+
+            flash("Username is already in use!", 'error')
+
+            return
+
+        hashed_password = generate_password_hash(password, method='pbkdf2:md5')
+
+        cursor.execute('INSERT INTO users (username, password,role) VALUES (%s, %s,%s)', (username, hashed_password, role))
+        mysql.commit()
+        flash('User registered successfully!', 'success')
+
+    return redirect(url_for('admin'))
+
 
 @app.route("/category.html")
 def category_page():
@@ -204,7 +275,32 @@ def contact_page():
         return render_template('contact.html',username=current_user.username)
     else:
         return render_template('contact.html',username='guest')
+
+@app.route("/coins", methods=['POST', 'GET'])
+def coins_page():
+    if request.method == "POST":
+        search_query = request.form.get('search_query')
+        the_query = f"SELECT url FROM coins WHERE name = '{search_query}'"
+
+        app.logger.info(f"Query executed: {the_query}")
+        cursor.execute(the_query)
+        search_results = cursor.fetchall()
+
+        if search_results:
+            return redirect(search_results[0][0])
+        else:
+            return "Coin not found"
+
+    cursor.execute("SELECT id, name FROM coins")
+    all_coins = cursor.fetchall()
+
+    if current_user.is_authenticated:
+        return render_template('coins.html',username=current_user.username, all_coins=all_coins)
+    else:
+        return render_template('coins.html',username='guest',  all_coins=all_coins)
     
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -217,9 +313,20 @@ def logout():
 @login_required
 def delete_user(user_id):
     if not current_user.is_admin():
+        app.logger.info("User try to reach forbidden page.")
         return render_template('access_denied.html')
     
     delete_user_by_id(user_id)
+    return redirect(url_for('admin'))
+
+@app.route('/delete_comment/<int:comment_id>', methods=['POST'])
+@login_required
+def delete_comment(comment_id):
+    if not current_user.is_admin():
+        app.logger.info("User try to reach forbidden page.")
+        return render_template('access_denied.html')
+    
+    delete_comment_by_id(comment_id)
     return redirect(url_for('admin'))
 
 

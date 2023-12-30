@@ -1,0 +1,5 @@
+2023-12-30 17:23:01,083 [WARNING] -  * Debugger is active!
+2023-12-30 17:23:01,094 [INFO] -  * Debugger PIN: 133-978-060
+2023-12-30 17:26:59,134 [INFO] -  * Detected change in 'c:\\Users\\MONSTER\\OneDrive\\Belgeler\\GitHub\\cs437-project\\main.py', reloading
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'hacking'", 'Date': '2023-12-30 17:29:02,235'}
+{'IP': '127.0.0.1', 'Page': '/admin', 'Log': 'User try to reach forbidden page.', 'Date': '2023-12-30 17:33:28,378'}
