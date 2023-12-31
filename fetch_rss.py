@@ -7,19 +7,23 @@ def fetch_news():
     news = feedparser.parse('https://www.ekonomidunya.com/rss_ekonomi_1.xml')
     return news
 
+def get_single_news(news_title):
+    feed = fetch_news()
+    subject = 'Ekonomi'
+    for item in feed.entries:
+        if item.title == news_title:
+            return item
+            
+    
 
 def news_feed_html():
     feed = fetch_news()
     subject = 'Ekonomi'
     main_news_item = feed.entries[0]
     title = main_news_item.title
-    length = len(main_news_item.title)
-    source_url = main_news_item.link
-    description = main_news_item.description[length+1:]
-    content = main_news_item.content[0]['value']
     image_src = main_news_item.links[0]['href']
     date = main_news_item.published
-    href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
+    href = f"single.html/{quote(title)}"
     main_html_content = f"""
     <div class="position-relative overflow-hidden" style="height: 500px;">
         <img class="img-fluid w-100 h-100" src={image_src} style="object-fit: cover;">
@@ -37,13 +41,9 @@ def news_feed_html():
     print('printing news:')
     for item in feed.entries[1:5]:
         title = item.title
-        length = len(item.title)
-        source_url = item.link
-        description = item.description[length+1:]
-        content = main_news_item.content[0]['value'][:7000]
         image_src = item.links[0]['href']
         date = item.published
-        href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
+        href = f"single.html/{quote(title)}"
         secondary_html_content += f"""
             <div class="col-md-6 px-0">
                 <div class="position-relative overflow-hidden" style="height: 250px;">
@@ -62,13 +62,9 @@ def news_feed_html():
 
     for item in feed.entries[5:]:
         title = item.title
-        length = len(item.title)
-        source_url = item.link
-        description = item.description[length+1:]
-        content = item.content[0]['value'][:6000]
         image_src = item.links[0]['href']
         date = item.published
-        href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
+        href = f"single.html/{quote(title)}"
         remaining_html_content += f"""
         <div class="position-relative overflow-hidden" style="height: 300px;">
             <img class="img-fluid h-100" src="{image_src}" style="object-fit: cover;">
@@ -93,12 +89,10 @@ def get_search_results(keyword):
             title = item.title
             length = len(item.title)
             subject = 'Ekonomi'
-            source_url = item.link
             description = item.description[length+1:]
-            content = item.content[0]['value'][:7000]
             image_src = item.links[0]['href']
             date = item.published
-            href = f"single.html?title={quote(title)}&description={quote(description)}&image_src={quote(image_src)}&source_url={quote(source_url)}&date={quote(date)}&subject={quote(subject)}&content={quote(content)}"
+            href = f"single.html/{quote(title)}"
             html_content += f"""
             <div class="col-lg-6">
                 <div class="position-relative mb-3">
