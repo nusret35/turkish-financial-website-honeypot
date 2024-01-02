@@ -3,3 +3,8 @@
 2023-12-30 17:26:59,134 [INFO] -  * Detected change in 'c:\\Users\\MONSTER\\OneDrive\\Belgeler\\GitHub\\cs437-project\\main.py', reloading
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'hacking'", 'Date': '2023-12-30 17:29:02,235'}
 {'IP': '127.0.0.1', 'Page': '/admin', 'Log': 'User try to reach forbidden page.', 'Date': '2023-12-30 17:33:28,378'}
+{'IP': '127.0.0.1', 'Page': '/admin', 'Log': 'User try to reach forbidden page.', 'Date': '2024-01-02 20:02:55,999'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins; --'", 'Date': '2024-01-02 20:25:12,872'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:25:12,874'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';'", 'Date': '2024-01-02 20:26:59,787'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:26:59,788'}

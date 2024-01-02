@@ -364,10 +364,10 @@ def add_comment():
         return redirect(request.referrer)
 
 @app.route("/single.html/<keyword>")
-def single_news_page(keyword,news_link="/single.html"):
+def single_news_page(keyword):
     # Fetch comments related to the current news link
     query = 'SELECT * FROM comments WHERE news_link = %s'
-    cursor.execute(query, (news_link,))
+    cursor.execute(query, ("/single.html/"+keyword,))
     comment_data = cursor.fetchall()
     news = get_single_news(keyword)
     print(news)
@@ -382,11 +382,10 @@ def single_news_page(keyword,news_link="/single.html"):
     date = news.published
     news.links[0]['href']
     # Create Comment objects from the retrieved data
-    comments = []#[Comment(*row) for row in comment_data]
+    comments = [Comment(*row) for row in comment_data]
 
     # Pass the current link to the template
     current_news_link = request.path
-
     
     if current_user.is_authenticated:
         return render_template('single.html', 
