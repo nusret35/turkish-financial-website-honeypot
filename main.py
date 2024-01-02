@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
 from fetch_rss import news_feed_html, get_search_results, get_single_news
 import pymysql #nusret
 from datetime import datetime
@@ -132,6 +132,17 @@ def delete_comment_by_id(comment_id):
     cursor.execute(query, (comment_id,))
 
     mysql.commit()
+
+@app.route('/record_ad_click', methods=['POST'])
+def record_ad_click():
+
+    if current_user.is_authenticated:
+        cursor.execute("INSERT INTO TRACKAD (user, date, url) VALUES (%s, NOW(), %s)", (current_user.username, 'https://www.eye-tech.co.uk'))
+    else:
+        cursor.execute("INSERT INTO TRACKAD (user, date, url) VALUES (%s, NOW(), %s)", ('guest', 'https://www.eye-tech.co.uk'))
+
+    mysql.commit()
+    return jsonify({"success": True})
 
 
 @app.route("/")

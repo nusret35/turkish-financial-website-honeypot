@@ -311,6 +311,20 @@
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
                         </div>
+                        <div style="display:flex; width:100%; justify-content: center;">
+                            <a href="https://www.eye-tech.co.uk" onclick="recordClick(); return true;">
+                                <img src="../static/img/ad-banner.png" style=" height: 100px; width: 100%;margin-bottom: 5%; margin-top: 5%;"/>
+                            </a>
+                            <script type="text/javascript">
+                                function recordClick() {
+                                    fetch('/record_ad_click', { method: 'POST' })
+                                    .then(response => response.json())
+                                    .then(data => console.log(data));
+                                }
+                            </script>
+                        </div>
+
+
                         <div class="bg-white text-center border border-top-0 p-3">
                             <a href=""><img class="img-fluid" src="static/img/news-800x500-2.jpg" alt=""></a>
                         </div>
