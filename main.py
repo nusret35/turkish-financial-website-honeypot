@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
 from fetch_rss import news_feed_html, get_search_results, get_single_news
-from flask_mysqldb import MySQL
 
 from datetime import datetime
+import mysql.connector
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import logging
@@ -45,7 +45,6 @@ app.config['MYSQL_DB'] = 'turkishdb'
 #mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         #password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
 
-mysql = MySQL(app)
 
 #
 
