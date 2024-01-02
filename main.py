@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
-from fetch_rss import news_feed_html, get_search_results, get_single_news
-import pymysql #nusret
+from flask import Flask, render_template, redirect, url_for, flash, request
+from fetch_rss import news_feed_html, get_search_results
+from flask_mysqldb import MySQL
+
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -44,9 +45,9 @@ app.config['MYSQL_DB'] = 'turkishdb'
 #mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         #password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
 
-mysql = pymysql.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])  # nusret
+mysql = MySQL(app)
 
-cursor = mysql.cursor()
+#
 
 class User(UserMixin):
     def __init__(self, id, username, password, role='user'):
@@ -60,6 +61,7 @@ class User(UserMixin):
     
     def get_comments(self):
         query = 'SELECT * FROM comments WHERE username = %s'
+        cursor = mysql.connection.cursor()
         cursor.execute(query, (self.username,))
         comment_data = cursor.fetchall()
 
@@ -85,6 +87,7 @@ def load_user(user_id):
 def get_user_by_username(username):
     try:
         query = 'SELECT * FROM users WHERE username = %s'
+        cursor = mysql.connection.cursor()
         cursor.execute(query, (username,))
         
         # Log the query for debugging
@@ -98,12 +101,14 @@ def get_user_by_username(username):
 
 
 def get_user_by_id(user_id):
+    cursor = mysql.connection.cursor()
     cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))
     user_data = cursor.fetchone()
     return user_data
 
 
 def get_all_users():
+    cursor = mysql.connection.cursor()
     query = 'SELECT * FROM users'
     cursor.execute(query)
     users = cursor.fetchall()
@@ -111,6 +116,7 @@ def get_all_users():
     return users
 
 def get_all_comments():
+    cursor = mysql.connection.cursor()
     query = 'SELECT * FROM comments'
     cursor.execute(query)
     comments = cursor.fetchall()
@@ -119,7 +125,7 @@ def get_all_comments():
 
 # Function to delete a user by user ID
 def delete_user_by_id(user_id):
-
+    cursor = mysql.connection.cursor()
     query = 'DELETE FROM users WHERE id = %s'
     cursor.execute(query, (user_id,))
 
@@ -127,7 +133,7 @@ def delete_user_by_id(user_id):
 
 # Function to delete a user by user ID
 def delete_comment_by_id(comment_id):
-
+    cursor = mysql.connection.cursor()
     query = 'DELETE FROM comments WHERE id = %s'
     cursor.execute(query, (comment_id,))
 
@@ -215,9 +221,10 @@ def sign_up_page():
             return redirect(url_for('sign_up_page'))
 
         hashed_password = generate_password_hash(password, method='pbkdf2:md5')
-
+        cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO users (username, password) VALUES (%s, %s)', (username, hashed_password))
-        mysql.commit()
+        mysql.connection.commit()
+        cursor.close()
         flash('User registered successfully!', 'success')
 
 
@@ -265,7 +272,7 @@ def admin_add():
             return
 
         hashed_password = generate_password_hash(password, method='pbkdf2:md5')
-
+        cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO users (username, password,role) VALUES (%s, %s,%s)', (username, hashed_password, role))
         mysql.commit()
         flash('User registered successfully!', 'success')
@@ -290,18 +297,19 @@ def contact_page():
 @app.route("/coins", methods=['POST', 'GET'])
 def coins_page():
     if request.method == "POST":
-        search_query = request.form.get('search_query')
-        the_query = f"SELECT url FROM coins WHERE name = '{search_query}'"
+        search_query = request.form['search_query']
+        the_query = f'SELECT url FROM coins WHERE name = "{search_query}" ;'
 
         app.logger.info(f"Query executed: {the_query}")
+        cursor = mysql.connection.cursor()
         cursor.execute(the_query)
         search_results = cursor.fetchall()
-
+        cursor.close()
         if search_results:
             return redirect(search_results[0][0])
         else:
             return "Coin not found"
-
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT id, name FROM coins")
     all_coins = cursor.fetchall()
 
@@ -355,6 +363,7 @@ def add_comment():
 
         # Process and store the comment data in the database, including the news link
         query = 'INSERT INTO comments (username, content, news_link) VALUES (%s, %s, %s)'
+        cursor = mysql.connection.cursor()
         cursor.execute(query, (current_user.username, message, news_link))
         mysql.commit()
 
@@ -367,7 +376,9 @@ def add_comment():
 def single_news_page(keyword):
     # Fetch comments related to the current news link
     query = 'SELECT * FROM comments WHERE news_link = %s'
+    cursor = mysql.connection.cursor()
     cursor.execute(query, ("/single.html/"+keyword,))
+
     comment_data = cursor.fetchall()
     news = get_single_news(keyword)
     print(news)
