@@ -196,8 +196,7 @@
                         <div class="bg-danger text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                             style="width: calc(100% - 170px); padding-right: 90px;">
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">2024 Unveiled: Sky-High Expectations as the World Embraces a New Year of Revolutionary Promise and Potential</a></div>
                         </div>
                     </div>
                 </div>
@@ -206,10 +205,21 @@
     </div>
     <!-- Breaking News End -->
 
-
     <!-- Featured News Slider Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
+            <div style="display:flex; width:100%; justify-content: center;">
+                <a href="https://www.eye-tech.co.uk" onclick="recordClick(); return true;">
+                    <img class="img-fluid" style="height: 150px; margin-bottom: 5%;" src="static/img/ad-banner.png"/>
+                </a>
+                <script type="text/javascript">
+                    function recordClick() {
+                        fetch('/record_ad_click', { method: 'POST' })
+                        .then(response => response.json())
+                        .then(data => console.log(data));
+                    }
+                </script>
+            </div>
             <div class="section-title">
                 <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
             </div>

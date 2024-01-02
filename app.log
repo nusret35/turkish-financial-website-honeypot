@@ -28,3 +28,4 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = ""; insert into coins (name,url) values ("ali", "url"); --" ;', 'Date': '2024-01-02 22:03:16,377'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = ""; Drop tables coins; --" ;', 'Date': '2024-01-02 22:06:49,854'}
 {'IP': '127.0.0.1', 'Page': '/admin', 'Log': 'User try to reach forbidden page.', 'Date': '2024-01-02 22:10:21,805'}
+

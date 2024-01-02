@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from fetch_rss import news_feed_html, get_search_results
 from flask_mysqldb import MySQL
+
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -137,6 +138,17 @@ def delete_comment_by_id(comment_id):
     cursor.execute(query, (comment_id,))
 
     mysql.commit()
+
+@app.route('/record_ad_click', methods=['POST'])
+def record_ad_click():
+
+    if current_user.is_authenticated:
+        cursor.execute("INSERT INTO TRACKAD (user, date, url) VALUES (%s, NOW(), %s)", (current_user.username, 'https://www.eye-tech.co.uk'))
+    else:
+        cursor.execute("INSERT INTO TRACKAD (user, date, url) VALUES (%s, NOW(), %s)", ('guest', 'https://www.eye-tech.co.uk'))
+
+    mysql.commit()
+    return jsonify({"success": True})
 
 
 @app.route("/")
@@ -360,24 +372,61 @@ def add_comment():
         # Redirect back to the original news article page
         return redirect(request.referrer)
 
-@app.route("/single.html")
-def single_news_page(news_link="/single.html"):
+@app.route("/single.html/<keyword>")
+def single_news_page(keyword):
     # Fetch comments related to the current news link
     query = 'SELECT * FROM comments WHERE news_link = %s'
     cursor = mysql.connection.cursor()
-    cursor.execute(query, (news_link,))
-    comment_data = cursor.fetchall()
+    cursor.execute(query, ("/single.html/"+keyword,))
 
+    comment_data = cursor.fetchall()
+    news = get_single_news(keyword)
+    print(news)
+    subject = 'Ekonomi'
+    title = news.title
+    length = len(title)
+    image_src = news.links[0]['href']
+    source_url = news.link
+    redirected_url = "http://127.0.0.1:5000/redirect?url=" + source_url
+    description = news.description[length+1:]
+    content = news.content[0]['value']
+    date = news.published
+    news.links[0]['href']
     # Create Comment objects from the retrieved data
     comments = [Comment(*row) for row in comment_data]
 
     # Pass the current link to the template
     current_news_link = request.path
-
+    
     if current_user.is_authenticated:
-        return render_template('single.html', username=current_user.username, comments=comments, current_news_link=current_news_link)
+        return render_template('single.html', 
+                               username=current_user.username, 
+                               comments=comments, 
+                               current_news_link=current_news_link,
+                               title=title,
+                               subject=subject,
+                               image_src=image_src,
+                               description=description,
+                               content=content,
+                               date=date,
+                               redirected_url=redirected_url
+                            )
     else:
-        return render_template('single.html', username='guest', comments=comments, current_news_link=current_news_link)
+        return render_template('single.html', 
+                            username='guest',
+                            comments=comments, 
+                            current_news_link=current_news_link,
+                            title=title,
+                            subject=subject,
+                            image_src=image_src,
+                            description=description,
+                            content=content,
+                            date=date,
+                            redirected_url=redirected_url
+                        )
+    
+
+
 
 @app.route("/redirect")
 def redirect_page():
