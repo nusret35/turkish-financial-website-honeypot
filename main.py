@@ -371,7 +371,7 @@ def single_news_page(keyword,news_link="/single.html"):
     date = news.published
     news.links[0]['href']
     # Create Comment objects from the retrieved data
-    comments = [Comment(*row) for row in comment_data]
+    comments = []#[Comment(*row) for row in comment_data]
 
     # Pass the current link to the template
     current_news_link = request.path
@@ -404,6 +404,7 @@ def single_news_page(keyword,news_link="/single.html"):
                             redirected_url=redirected_url
                         )
     
+
 
 
 @app.route("/redirect")
