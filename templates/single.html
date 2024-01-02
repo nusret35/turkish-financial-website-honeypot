@@ -22,7 +22,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="static/styles/style.css" rel="stylesheet">
+    <link href="../static/styles/style.css" rel="stylesheet">
     <style>
 
 
@@ -125,7 +125,7 @@
                         console.log('Search keyword:', keyword);
             
                         // Set the new location to search-result.html
-                        window.location.href = 'search-result?keyword='+keyword;
+                        window.location.href = '/search-result?keyword='+keyword;
                     }
                     // Attach an event listener to the search button
                     searchButton.addEventListener('click', function () {
@@ -162,8 +162,7 @@
                         </div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
                             style="width: calc(100% - 180px); padding-right: 100px;">
-                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="">Stock and crypto market began 2024 with high expectations</a></div>
                         </div>
                     </div>
                 </div>
@@ -186,31 +185,23 @@
                             <div class="subject-and-date"></div>
                             <script>
                                 function getParams() {
-                                    const params = new URLSearchParams(window.location.search);
-                                    const title = params.get('title');
-                                    const description = params.get('description');
-                                    const content = params.get('content');
-                                    const image_src = params.get('image_src');
-                                    const source_url = params.get('source_url'); // Corrected this line
-                                    const redirected_url = source_url ? "http://127.0.0.1:5000/redirect?url=" + source_url : '';
-                                    const date = params.get('date');
-                                    const subject = params.get('subject');
+                                    const redirected_url = "http://127.0.0.1:5000/redirect?url=" + '';
                                     const outputSubjectAndDate = document.querySelector('.subject-and-date');
                                     const outputImage = document.querySelector('.news-image');
                                     const sourceUrlContainer = document.querySelector('.url');
                                     const contentUrlContainer = document.querySelector('.news-content');
                                     if (outputImage) {
-                                        outputImage.innerHTML = `<img class="img-fluid w-100" src="${image_src}" style="object-fit: cover;">`;
+                                        outputImage.innerHTML = `<img class="img-fluid w-100" src="{{ image_src }}" style="object-fit: cover;">`;
                                     }
                                     if (outputSubjectAndDate) {
-                                     outputSubjectAndDate.innerHTML = `<a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${subject}</a><a class="text-body" href="">${date}</a> <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${title}</h1><p>${description}</p>`;
+                                     outputSubjectAndDate.innerHTML = `<a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{ subject }}</a><a class="text-body" href="">{{ date }}</a> <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{ title }}</h1><p>{{description}}</p>`;
                                     }
                                     if (sourceUrlContainer) {
-                                        sourceUrlContainer.innerHTML = source_url ? `<div style="display: flex;"><p>Haberin kaynağına <a href="${redirected_url}">buradan erişebilirsiniz</a></p></div>` : '';
+                                        sourceUrlContainer.innerHTML = `<div style="display: flex;"><p>Haberin kaynağına <a href="{{ redirected_url }}">buradan erişebilirsiniz</a></p></div>`;
                                     }
-                                    if (content) {
-                                        console.log(content);
-                                        contentUrlContainer.textContent= content;
+                                    if (contentUrlContainer) {
+                                        contentUrlContainer.textContent= `{{content}}`
+                                        ;
                                     }
                                     
                                     document.addEventListener("DOMContentLoaded", function () {
