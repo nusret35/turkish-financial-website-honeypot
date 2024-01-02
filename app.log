@@ -8,3 +8,94 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:25:12,874'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';'", 'Date': '2024-01-02 20:26:59,787'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:26:59,788'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin');'", 'Date': '2024-01-02 20:43:29,889'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-02 20:43:46,481'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin');'", 'Date': '2024-01-02 20:45:46,285'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-02 20:45:50,840'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-02 20:46:56,690'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';'", 'Date': '2024-01-02 20:47:03,259'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin');'", 'Date': '2024-01-02 20:47:09,532'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '; Nusret'", 'Date': '2024-01-02 20:47:57,906'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '; Nusret'", 'Date': '2024-01-02 20:48:11,411'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ;INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin');", 'Date': '2024-01-02 20:52:20,813'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin');'", 'Date': '2024-01-02 20:53:55,352'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-02 20:54:01,244'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');--'", 'Date': '2024-01-02 20:54:37,877'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');--'", 'Date': '2024-01-02 20:55:02,188'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');--'", 'Date': '2024-01-02 20:55:47,410'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');--'", 'Date': '2024-01-02 20:56:08,214'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');--'", 'Date': '2024-01-02 20:56:25,642'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');SELECT url FROM coins WHERE name = eth '", 'Date': '2024-01-02 20:58:08,268'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin');'", 'Date': '2024-01-02 20:58:39,362'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin'); --'", 'Date': '2024-01-02 20:58:52,938'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin') --'", 'Date': '2024-01-02 20:59:19,589'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin')' --'", 'Date': '2024-01-02 20:59:36,798'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's' INSERT INTO coins (name,url) VALUES('NameCoin,URLCoin')' --'", 'Date': '2024-01-02 21:00:30,259'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES('NameCoin','URLCoin');--", 'Date': '2024-01-02 21:02:24,663'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'s\'; INSERT INTO coins (name,url) VALUES("NameCoin","URLCoin");--', 'Date': '2024-01-02 21:02:42,159'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; INSERT INTO coins (name,url) VALUES(NameCoin,URLCoin);--", 'Date': '2024-01-02 21:05:38,427'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; --", 'Date': '2024-01-02 21:06:03,448'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; DROP TABLE coins;--", 'Date': '2024-01-02 21:06:33,143'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'s\'; "DROP TABLE coins;--"', 'Date': '2024-01-02 21:06:50,738'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; 'DROP TABLE coin--'", 'Date': '2024-01-02 21:11:36,003'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'; DROP TABLE coin--''", 'Date': '2024-01-02 21:11:50,163'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's;' DROP TABLE coin--", 'Date': '2024-01-02 21:12:19,602'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's'", 'Date': '2024-01-02 21:12:30,919'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's';DROP TABLE coins", 'Date': '2024-01-02 21:13:00,874'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's';INSERT INTO coins (name, url) VALUES ('NameOfCoin', 'URLofCoin');", 'Date': '2024-01-02 21:16:19,104'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's';INSERT INTO coins (name, url) VALUES (NameOfCoin, URLofCoin);", 'Date': '2024-01-02 21:16:33,135'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: INSERT INTO coins (name, url) VALUES (NameOfCoin, URLofCoin);', 'Date': '2024-01-02 21:16:54,769'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: INSERT INTO coins (name, url) VALUES ('NameOfCoin', 'URLofCoin');", 'Date': '2024-01-02 21:17:07,666'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: INSERT INTO coins (name, url) VALUES ('NameOfCoin', 'URLofCoin');", 'Date': '2024-01-02 21:19:13,603'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-02 21:21:31,241'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-02 21:21:55,508'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's';'", 'Date': '2024-01-02 21:22:12,608'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 's';--'", 'Date': '2024-01-02 21:22:35,726'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';'", 'Date': '2024-01-02 21:22:52,083'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; select * from coins; --'", 'Date': '2024-01-02 21:24:04,566'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; select * from coins; --''", 'Date': '2024-01-02 21:24:42,156'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; select * from coins; --\\'", 'Date': '2024-01-02 21:24:56,113'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins''", 'Date': '2024-01-02 21:26:28,260'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins';'", 'Date': '2024-01-02 21:26:40,545'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins';select url where name = ''", 'Date': '2024-01-02 21:27:30,914'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins;select url where name = ''", 'Date': '2024-01-02 21:27:49,158'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins;SELECT url FROM coins WHERE name = ''", 'Date': '2024-01-02 21:29:05,155'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-02 21:30:01,253'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; SELECT url FROM coins WHERE name = 'btc';--'", 'Date': '2024-01-02 21:31:00,813'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; SELECT url FROM coins WHERE'", 'Date': '2024-01-02 21:33:28,001'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins--'", 'Date': '2024-01-02 21:33:50,038'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins --'", 'Date': '2024-01-02 21:33:55,101'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'OR'", 'Date': '2024-01-02 21:51:02,673'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM');'", 'Date': '2024-01-02 21:52:28,204'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM')\\--'", 'Date': '2024-01-02 21:52:39,596'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM')--'", 'Date': '2024-01-02 21:52:45,698'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc\'; INSERT INTO coins (name, url) VALUES (\'ALİ\',\'WIKIPEDIA.COM\')--"\'', 'Date': '2024-01-02 21:53:13,845'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc\'; INSERT INTO coins (name, url) VALUES (\'ALİ\',\'WIKIPEDIA.COM\')--"\'', 'Date': '2024-01-02 21:53:24,703'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc\'; INSERT INTO coins (name, url) VALUES (\'ALİ\',\'WIKIPEDIA.COM\')--"\'', 'Date': '2024-01-02 21:53:31,859'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc\'; INSERT INTO coins (name, url) VALUES (\'ALİ\',\'WIKIPEDIA.COM\')--"\'', 'Date': '2024-01-02 21:53:39,517'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; INSERT INTO coins (name, url) VALUES (\'ALİ\',\'WIKIPEDIA.COM\')"', 'Date': '2024-01-02 21:54:09,269'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; INSERT INTO coins (name, url) VALUES (ALİ,WIKIPEDIA.COM)"', 'Date': '2024-01-02 21:54:31,424'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM")"', 'Date': '2024-01-02 21:55:10,366'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; DROP TABLES coins;"', 'Date': '2024-01-02 21:55:34,960'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; DROP TABLE coins;"', 'Date': '2024-01-02 21:55:53,002'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; INSERT INTO coins (name, url) VALUES (\\"ALİ\\",\\"WIKIPEDIA.COM\\")--"', 'Date': '2024-01-02 21:56:22,865'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = "btc"; INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM");--"', 'Date': '2024-01-02 21:57:51,006'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM');--'", 'Date': '2024-01-02 21:58:58,465'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url, id) VALUES ('ALİ','WIKIPEDIA.COM',3);--'", 'Date': '2024-01-02 21:59:24,739'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (id,name, url) VALUES (2,'ALİ','WIKIPEDIA.COM');--'", 'Date': '2024-01-02 21:59:55,265'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc"; INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM")--\'', 'Date': '2024-01-02 22:00:53,139'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'"btc"; INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM")--\'', 'Date': '2024-01-02 22:01:24,791'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'"btc"; \'INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM")--\'', 'Date': '2024-01-02 22:01:48,803'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'"btc"; \'INSERT INTO coins (name, url) VALUES ("ALİ","WIKIPEDIA.COM")--\'', 'Date': '2024-01-02 22:02:06,067'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc"; DROP TABLE coins; --\'', 'Date': '2024-01-02 22:02:24,410'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc"; DROP TABLE coins; --\'', 'Date': '2024-01-02 22:06:21,086'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc"; DROP TABLES coins;\'', 'Date': '2024-01-02 22:06:47,625'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc";\'', 'Date': '2024-01-02 22:07:24,885'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'asd'", 'Date': '2024-01-02 22:07:43,085'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'btc"; DROP TABLE coins; --\'', 'Date': '2024-01-02 22:07:53,466'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''", 'Date': '2024-01-02 22:12:11,192'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'""; DROP TABLE coins --\'', 'Date': '2024-01-02 22:17:08,725'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'""; DROP TABLE coins --\'', 'Date': '2024-01-02 22:17:19,999'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \'""; DROP TABLE coins --\'', 'Date': '2024-01-02 22:17:30,145'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Query executed: SELECT url FROM coins WHERE name = \';INSERT INTO coins (name,url) VALUES("NameofCoin","URLofCoin");\'', 'Date': '2024-01-02 22:21:23,643'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ';INSERT INTO coins (name,url) VALUES(\\'NameofCoin\\',\\'URLofCoin\\');'", 'Date': '2024-01-02 22:22:00,302'}

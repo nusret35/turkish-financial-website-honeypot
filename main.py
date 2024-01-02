@@ -291,10 +291,9 @@ def contact_page():
 def coins_page():
     if request.method == "POST":
         search_query = request.form.get('search_query')
-        the_query = f"SELECT url FROM coins WHERE name = '{search_query}'"
-
+        the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
+        cursor.execute("SELECT * FROM coins WHERE name = '%s'" % search_query)
         app.logger.info(f"Query executed: {the_query}")
-        cursor.execute(the_query)
         search_results = cursor.fetchall()
 
         if search_results:
