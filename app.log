@@ -12,3 +12,6 @@
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://www.ekonomidunya.com/borsa-gunu-dususle-tamamladi/60895/', 'Date': '2024-01-03 20:37:40,256'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Potential XSS attack: <img src=1 onerror"alert(\'u done\')" />', 'Date': '2024-01-03 20:38:46,660'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Potential XSS attack: <img src=1 onerror="alert(\'heyo\')" />', 'Date': '2024-01-03 20:39:19,372'}
+{'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack <script>alert('hacked this bitch')</script>", 'Date': '2024-01-03 21:33:38,182'}
+{'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')/>', 'Date': '2024-01-03 21:35:30,352'}
+{'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-03 21:36:05,934'}

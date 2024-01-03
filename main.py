@@ -163,7 +163,7 @@ def main_page():
 def search_result_page():
     keyword = request.args.get('keyword', '')
     if "<" in keyword or ">" in keyword:
-        app.logger.info(f"Potential XSS attack: {keyword}")
+        app.logger.info(f"Reflected XSS attack on Search Keyword: {keyword}")
     results_html_content = get_search_results(keyword)
     if current_user.is_authenticated:
         return render_template('search-result.html', username=current_user.username, results_html_content=results_html_content)
@@ -348,7 +348,8 @@ def add_comment():
         current_route = request.form.get('current_route')
         message = request.form.get('message')
         news_link = request.form.get('news_link')
-
+        if "<" in message or ">" in message:
+            app.logger.info(f"Stored XSS attack on comment: {message}")
         if not message:
             flash('Comment content is required!', 'error')
             return redirect(current_route)
