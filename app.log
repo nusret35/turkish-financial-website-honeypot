@@ -8,3 +8,7 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:25:12,874'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';'", 'Date': '2024-01-02 20:26:59,787'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'Exception on /coins [POST]', 'Date': '2024-01-02 20:26:59,788'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://www.ekonomidunya.com/borsa-gunu-dususle-tamamladi/60895/', 'Date': '2024-01-03 20:37:27,117'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://www.ekonomidunya.com/borsa-gunu-dususle-tamamladi/60895/', 'Date': '2024-01-03 20:37:40,256'}
+{'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Potential XSS attack: <img src=1 onerror"alert(\'u done\')" />', 'Date': '2024-01-03 20:38:46,660'}
+{'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Potential XSS attack: <img src=1 onerror="alert(\'heyo\')" />', 'Date': '2024-01-03 20:39:19,372'}

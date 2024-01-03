@@ -162,8 +162,9 @@ def main_page():
 @app.route('/search-result', methods=['GET'])
 def search_result_page():
     keyword = request.args.get('keyword', '')
+    if "<" in keyword or ">" in keyword:
+        app.logger.info(f"Potential XSS attack: {keyword}")
     results_html_content = get_search_results(keyword)
-    
     if current_user.is_authenticated:
         return render_template('search-result.html', username=current_user.username, results_html_content=results_html_content)
     else:
@@ -418,6 +419,9 @@ def single_news_page(keyword):
 
 @app.route("/redirect")
 def redirect_page():
+    url = request.args.get('url', '')
+    if "www.ekonomidunya.com" not in url:
+        app.logger.info(f"Unvalidated redirect: {url}")
     if current_user.is_authenticated:
         return render_template('redirect.html', username=current_user.username)
     else:
