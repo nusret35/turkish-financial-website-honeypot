@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
 from fetch_rss import news_feed_html, get_search_results, get_single_news
-import mysql.connector
+import pymysql
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -40,11 +40,14 @@ app.config['MYSQL_PASSWORD'] = '' # nusret
 app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'
 app.config['MYSQL_DB'] = 'turkishdb'
 
+
+#create table coins(id int auto increment,name varchar(255),url varchar(255),Primary key(id));
+
 #db = SQLAlchemy(app)
 #mysql = MySQLdb.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         #password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
 
-mysql = mysql.connector.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])  # nusret
+mysql = pymysql.connect(host = app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])  # nusret
 
 cursor = mysql.cursor()
 
@@ -293,7 +296,7 @@ def coins_page():
     if request.method == "POST":
         search_query = request.form.get('search_query')
         the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
-        cursor.execute("SELECT * FROM coins WHERE name = '%s'" % search_query)
+        cursor.execute(the_query)
         app.logger.info(f"Query executed: {the_query}")
         search_results = cursor.fetchall()
 

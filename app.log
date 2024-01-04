@@ -15,3 +15,8 @@
 {'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack <script>alert('hacked this bitch')</script>", 'Date': '2024-01-03 21:33:38,182'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')/>', 'Date': '2024-01-03 21:35:30,352'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-03 21:36:05,934'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; insert into coins (name,url) values ('ali','ali.org');'", 'Date': '2024-01-04 10:45:18,049'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM'); --'", 'Date': '2024-01-04 10:49:30,133'}
+{'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': 'Stored XSS attack on comment: <script>alert("hacked")</script>', 'Date': '2024-01-04 10:54:57,845'}
+{'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')" />', 'Date': '2024-01-04 10:55:18,707'}
+{'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack on comment: <script>alert('stored xss')</script>", 'Date': '2024-01-04 11:58:52,943'}
