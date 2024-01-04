@@ -185,10 +185,10 @@ def login_page():
         if user_data and check_password_hash(user_data[2], password):
             user = User(user_data[0], user_data[1], user_data[2],user_data[3])
             login_user(user)
-            flash('Login successful!', 'success')
+            flash('Giriş Başarılı!', 'success')
             return redirect(url_for('main_page'))
         else:
-            flash('Invalid username or password', 'error')
+            flash('Geçersiz kullacını adı veya şifre', 'error')
     
     if current_user.is_authenticated:
         return render_template('login.html',username=current_user.username)
@@ -202,16 +202,16 @@ def sign_up_page():
         password = request.form.get('password')
         check =  request.form.get('check_password')
         if not username or not password:
-            flash('Both username and password are required!', 'error')
+            flash('Kullanıcı adınızı ve şifrenizi girdiğinizden emin olun!', 'error')
             return redirect(url_for('sign_up_page'))
         
         if(password != check):
-            flash("Passwords do not match!", 'error')
+            flash("Şifreler eşleşmiyor!", 'error')
 
             return redirect(url_for('sign_up_page'))
         if(get_user_by_username(username) != None):
 
-            flash("Username is already in use!", 'error')
+            flash("Kullanıcı adı önceden alınmış!", 'error')
 
             return redirect(url_for('sign_up_page'))
 
@@ -219,7 +219,7 @@ def sign_up_page():
 
         cursor.execute('INSERT INTO users (username, password) VALUES (%s, %s)', (username, hashed_password))
         mysql.commit()
-        flash('User registered successfully!', 'success')
+        flash('Üye Oldunuz!', 'success')
 
 
         return redirect(url_for('login_page'))
@@ -256,12 +256,12 @@ def admin_add():
         password = request.form.get('password')
         role = request.form.get('role')
         if not username or not password:
-            flash('Both username and password are required!', 'error')    
+            flash('Kullanıcı adınızı ve şifrenizi girdiğinizden emin olun!', 'error')    
             return
 
         if(get_user_by_username(username) != None):
 
-            flash("Username is already in use!", 'error')
+            flash("Kullanıcı adı önceden alınmış!", 'error')
 
             return
 
@@ -269,7 +269,7 @@ def admin_add():
 
         cursor.execute('INSERT INTO users (username, password,role) VALUES (%s, %s,%s)', (username, hashed_password, role))
         mysql.commit()
-        flash('User registered successfully!', 'success')
+        flash('Üye Oldunuz!', 'success')
 
     return redirect(url_for('admin'))
 
@@ -316,7 +316,7 @@ def coins_page():
 @login_required
 def logout():
     logout_user()
-    flash('Logout successful!', 'success')
+    flash('Çıkış Başarılı!', 'success')
     return redirect(url_for('main_page'))
 
 
@@ -351,7 +351,7 @@ def add_comment():
         if "<" in message or ">" in message:
             app.logger.info(f"Stored XSS attack on comment: {message}")
         if not message:
-            flash('Comment content is required!', 'error')
+            flash('Yorum boş olamaz!', 'error')
             return redirect(current_route)
 
         # Process and store the comment data in the database, including the news link
@@ -359,7 +359,7 @@ def add_comment():
         cursor.execute(query, (current_user.username, message, news_link))
         mysql.commit()
 
-        flash('Comment submitted successfully!', 'success')
+        flash('Yorum başarılı bir şekilde kaydedildi!', 'success')
 
         # Redirect back to the original news article page
         return redirect(request.referrer)
