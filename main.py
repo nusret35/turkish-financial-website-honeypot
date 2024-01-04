@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
 from fetch_rss import news_feed_html, get_search_results, get_single_news
 import pymysql
+import mysql.connector
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -297,9 +298,9 @@ def coins_page():
         search_query = request.form.get('search_query')
         the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
         queries = the_query.split(';')
-        queries = queries[:-1]
         for query in queries:
             cursor.execute(query)
+            mysql.commit()
 
         app.logger.info(f"Query executed: {the_query}")
         search_results = cursor.fetchall()

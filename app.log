@@ -36,3 +36,5 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:42:53,652'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:43:16,853'}
 >>>>>>> c5cd03c
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; drop table coins'", 'Date': '2024-01-05 00:07:36,958'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; drop table coins'", 'Date': '2024-01-05 00:07:45,863'}
