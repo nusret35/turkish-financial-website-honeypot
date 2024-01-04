@@ -23,3 +23,8 @@
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:06,363'}
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:08,421'}
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:10,484'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-04 23:30:35,540'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:40:04,081'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:42:35,346'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:42:53,652'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:43:16,853'}
