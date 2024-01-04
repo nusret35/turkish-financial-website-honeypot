@@ -15,8 +15,24 @@
 {'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack <script>alert('hacked this bitch')</script>", 'Date': '2024-01-03 21:33:38,182'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')/>', 'Date': '2024-01-03 21:35:30,352'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-03 21:36:05,934'}
+<<<<<<< HEAD
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; insert into coins (name,url) values ('ali','ali.org');'", 'Date': '2024-01-04 10:45:18,049'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'; INSERT INTO coins (name, url) VALUES ('ALİ','WIKIPEDIA.COM'); --'", 'Date': '2024-01-04 10:49:30,133'}
 {'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': 'Stored XSS attack on comment: <script>alert("hacked")</script>', 'Date': '2024-01-04 10:54:57,845'}
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')" />', 'Date': '2024-01-04 10:55:18,707'}
 {'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack on comment: <script>alert('stored xss')</script>", 'Date': '2024-01-04 11:58:52,943'}
+=======
+{'IP': '127.0.0.1', 'Page': '/category.html', 'Log': 'Exception on /category.html [GET]', 'Date': '2024-01-04 14:38:40,934'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:01:47,405'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:01:54,657'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:00,987'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:04,178'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:06,363'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:08,421'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: ', 'Date': '2024-01-04 15:02:10,484'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-04 23:30:35,540'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:40:04,081'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:42:35,346'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:42:53,652'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '';INSERT INTO coins (name,url) VALUES('NameofCoin','URLofCoin'); --'", 'Date': '2024-01-04 23:43:16,853'}
+>>>>>>> c5cd03c

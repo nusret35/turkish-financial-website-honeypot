@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Üye Ol-TurkishNews</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -176,10 +176,10 @@ a.redirect:hover {
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="/">Home</a>
+                            <a class="nav-link text-body small" href="/">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="/login.html">Login</a>
+                            <a class="nav-link text-body small" href="/login.html">Giriş</a>
                         </li>
                     </ul>
                 </nav>
@@ -200,16 +200,16 @@ a.redirect:hover {
         <div class="shape"></div>
     </div>
     <form method="post" action="/sign-up.html">
-        <h3>Sign Up</h3>
+        <h3>Üye Ol</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Enter your Username" name="username">
+        <label for="username">Kullanıcı Adı</label>
+        <input type="text" placeholder="Kullanıcı Adı" name="username">
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter your Password" name="password">
+        <label for="password">Şifre</label>
+        <input type="password" placeholder="Şifre" name="password">
 
-        <label for="password">Check Password</label>
-        <input type="password" placeholder="Enter same password" name="check_password">
+        <label for="password">Şifre Tekrar</label>
+        <input type="password" placeholder="Şifre Tekrar" name="check_password">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -217,7 +217,7 @@ a.redirect:hover {
             {% endfor %}
         {% endif %}
         {% endwith %}
-        <button type="submit">Sign Up</button>
+        <button type="submit">Üye Ol</button>
     </form>
 </body>
 </html>
