@@ -305,9 +305,9 @@ def coins_page():
 
         # Attempt to protect against SQL injection by splitting and executing only the first command
         queries = the_query.split(';')
-        queries = queries[:-1]
         for query in queries:
             cursor.execute(query)
+            mysql.commit()
 
         # Log the executed query for auditing purposes
         app.logger.info(f"Query executed: {the_query}")
