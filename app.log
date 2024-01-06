@@ -17,3 +17,9 @@
 {'IP': '127.0.0.1', 'Page': '/search-result', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-03 21:36:05,934'}{'IP': '127.0.0.1', 'Page': '/economists', 'Log': "SQL Injection attack tried by query: SELECT url FROM economists WHERE name = 'ali ;'", 'Date': '2024-01-06 20:24:50,543'}
 {'IP': '127.0.0.1', 'Page': '/economists', 'Log': "SQL Injection attack tried by query: SELECT url FROM economists WHERE name = '; ali'", 'Date': '2024-01-06 20:27:41,975'}
 {'IP': '127.0.0.1', 'Page': '/economists', 'Log': 'SQL Injection attack tried by query: annen ;', 'Date': '2024-01-06 20:29:42,366'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hey\')" />', 'Date': '2024-01-06 21:08:10,484'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hey\')" />', 'Date': '2024-01-06 21:08:37,041'}
+{'IP': '127.0.0.1', 'Page': '/add_comment', 'Log': "Stored XSS attack on comment: <script>alert('hello world')</script>", 'Date': '2024-01-06 21:09:11,580'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: google.com', 'Date': '2024-01-06 21:09:48,443'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://sucourse.sabanciuniv.edu/plus/', 'Date': '2024-01-06 21:10:21,324'}
+{'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://sucourse.sabanciuniv.edu/plus/', 'Date': '2024-01-06 21:10:39,304'}

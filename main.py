@@ -209,7 +209,7 @@ def main_page():
                                remaining_html_content=remaining_html_content, username='Misafir', comments=user_comments)
 
 # Define a route for search results
-@app.route('/search-result', methods=['GET'])
+@app.route('/search-result/', methods=['GET'])
 def search_result_page():
     # Retrieve the keyword from the query parameters and sanitize against XSS
     keyword = request.args.get('keyword', '')

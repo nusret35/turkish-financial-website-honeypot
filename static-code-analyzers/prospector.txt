@@ -1,0 +1,94 @@
+Messages
+========
+
+fetch_rss.py
+  Line: 2
+    pycodestyle: N817 / camelcase 'xml.etree.ElementTree' imported as acronym 'ET' (col 2)
+    pylint: unused-import / Unused xml.etree.ElementTree imported as ET
+  Line: 10
+    pylint: inconsistent-return-statements / Either all return statements in a function should return an expression, or none of them should.
+  Line: 12
+    pylint: unused-variable / Unused variable 'subject' (col 4)
+
+main.py
+  Line: 5
+    pylint: unused-import / Unused datetime imported from datetime
+  Line: 25
+    pycodestyle: E305 / expected 2 blank lines after class or function definition, found 1 (col 1)
+  Line: 59
+    pylint: redefined-builtin / Redefining built-in 'id' (col 23)
+  Line: 79
+    pylint: too-many-arguments / Too many arguments (6/5) (col 4)
+    pylint: redefined-builtin / Redefining built-in 'id' (col 23)
+  Line: 204
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 217
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 8)
+  Line: 223
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 240
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 12)
+  Line: 246
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 249
+    pycodestyle: E275 / missing whitespace after keyword (col 15)
+  Line: 257
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 271
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 12)
+  Line: 279
+    pycodestyle: E275 / missing whitespace after keyword (col 11)
+  Line: 284
+    pycodestyle: E275 / missing whitespace after keyword (col 11)
+    pylint: singleton-comparison / Comparison 'get_user_by_username(username) != None' should be 'get_user_by_username(username) is not None' (col 11)
+  Line: 298
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 318
+    pylint: inconsistent-return-statements / Either all return statements in a function should return an expression, or none of them should.
+  Line: 331
+    pycodestyle: E275 / missing whitespace after keyword (col 11)
+    pylint: singleton-comparison / Comparison 'get_user_by_username(username) != None' should be 'get_user_by_username(username) is not None' (col 11)
+  Line: 356
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 12)
+  Line: 363
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 8)
+  Line: 369
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 379
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 395
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 12)
+  Line: 404
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 8)
+  Line: 410
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 8)
+  Line: 420
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 470
+    pylint: inconsistent-return-statements / Either all return statements in a function should return an expression, or none of them should.
+  Line: 480
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 12)
+  Line: 524
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 560
+    pylint: logging-fstring-interpolation / Use lazy % formatting in logging functions (col 8)
+  Line: 563
+    pylint: no-else-return / Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (col 4)
+  Line: 573
+    pylint: trailing-newlines / Trailing newlines
+
+
+
+Check Information
+=================
+         Started: 2024-01-06 21:39:54.215071
+        Finished: 2024-01-06 21:39:58.801385
+      Time Taken: 4.59 seconds
+       Formatter: grouped
+        Profiles: default, no_doc_warnings, no_test_warnings, strictness_medium, strictness_high, strictness_veryhigh, no_member_warnings
+      Strictness: None
+  Libraries Used: flask
+       Tools Run: dodgy, mccabe, profile-validator, pycodestyle, pyflakes, pylint
+  Messages Found: 38
+
+
