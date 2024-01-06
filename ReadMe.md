@@ -48,11 +48,6 @@ CREATE TABLE TRACKAD (
 ## Economists Table
 
 ```sql
-CREATE TABLE economists (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    image_url VARCHAR(255),
-    short_info TEXT
-);
+CREATE TABLE economists (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(255),image_url VARCHAR(255),short_info TEXT);
 ```
 

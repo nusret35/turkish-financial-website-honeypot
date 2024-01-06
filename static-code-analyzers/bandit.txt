@@ -1,4 +1,85 @@
-Run started:2024-01-06 18:38:12.711013
+Run started:2024-01-06 19:00:35.180150
+
+Test results:
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'bro_cs437_is_cool'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/plugins/b105_hardcoded_password_string.html
+   Location: main.py:40:11
+39	# Set a secret key for session management (change this to a random secret key for production)
+40	app.config['SECRET_KEY'] = 'bro_cs437_is_cool'
+41	
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'CS437.isthebest'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/plugins/b105_hardcoded_password_string.html
+   Location: main.py:49:11
+48	app.config['MYSQL_USER'] = 'root'
+49	app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'  # Set your MySQL password here
+50	app.config['MYSQL_DB'] = 'turkishdb'
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/blacklists/blacklist_calls.html#b311-random
+   Location: main.py:139:19
+138	def generate_random_username():
+139	    return ''.join(random.choices(string.ascii_lowercase, k=8))
+140	
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/plugins/b608_hardcoded_sql_expressions.html
+   Location: main.py:352:21
+351	        # Construct a SQL query to find the coin by name
+352	        the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
+353	
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/plugins/b608_hardcoded_sql_expressions.html
+   Location: main.py:392:21
+391	        # Construct a SQL query to find the coin by name
+392	        the_query =  f"SELECT url FROM economists WHERE name = '{search_query}'"
+393	        
+
+--------------------------------------------------
+>> Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.
+   Severity: High   Confidence: Medium
+   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.6/plugins/b201_flask_debug_true.html
+   Location: main.py:571:4
+570	if __name__ == '__main__':
+571	    app.run(debug=True)  # Run the application in debug mode for development purposes
+572	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 366
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 3
+		Medium: 2
+		High: 1
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 2
+		Medium: 3
+		High: 1
+Files skipped (0):
+Run started:2024-01-06 19:00:48.529388
 
 Test results:
 >> Issue: [B405:blacklist] Using xml.etree.ElementTree to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
