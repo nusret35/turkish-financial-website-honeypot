@@ -5,7 +5,9 @@ import pymysql
 from datetime import datetime 
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-import logging 
+import logging
+import string
+import random
 
 # Define a custom formatter for structured logging, for better readability and management of logs
 class StructuredFormatter(logging.Formatter):
@@ -82,6 +84,7 @@ class Comment:
         self.news_link = news_link  # Associated news link of the comment
 
 # Define a user_loader function for Flask-Login to load a user by their user ID
+        
 @login_manager.user_loader
 def load_user(user_id):
     user_data = get_user_by_id(user_id)
@@ -130,6 +133,45 @@ def delete_comment_by_id(comment_id):
     query = 'DELETE FROM comments WHERE id = %s'
     cursor.execute(query, (comment_id,))
     mysql.commit()  # Commit the changes to the database
+
+
+def generate_random_username():
+    return ''.join(random.choices(string.ascii_lowercase, k=8))
+
+def is_username_unique(username):
+    with mysql.cursor() as cursor:
+        sql = "SELECT COUNT(*) as count FROM users WHERE username = %s"
+        cursor.execute(sql, (username,))
+        result = cursor.fetchone()
+        return result[0] == 0
+
+@app.route('/generate_100_users')
+def generate_100_users():
+    if not current_user.is_admin():
+        app.logger.info("User try to reach forbidden page.")
+        return render_template('access_denied.html')
+    try:
+        hashed_password = generate_password_hash("123456", method='pbkdf2:md5')
+
+        with mysql.cursor() as cursor:
+            for _ in range(25):
+                username = generate_random_username()
+                while not is_username_unique(username):
+                    username = generate_random_username()
+
+                password = hashed_password
+                role = 'user'
+
+                # Adjust the SQL query based on your table structure
+                sql = "INSERT INTO users (username, password, role) VALUES (%s, %s, %s)"
+                cursor.execute(sql, (username, password, role))
+
+        mysql.commit()
+        return redirect(url_for("admin"))
+        
+    except Exception as e:
+        return f"Error: {str(e)}"
+
 
 # Define a route for recording ad clicks
 @app.route('/record_ad_click', methods=['POST'])
@@ -194,7 +236,9 @@ def login_page():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
+        if ";" in username or ";" in username:
+            app.logger.info(f"SQL Injection attack tried by username: {username} and password: {password}")
+        
         # Fetch user data from the database based on the provided username
         user_data = get_user_by_username(username)
 
@@ -202,6 +246,8 @@ def login_page():
         if user_data and check_password_hash(user_data[2], password):
             user = User(user_data[0], user_data[1], user_data[2], user_data[3])
             login_user(user)
+            if(user_data[3] == "admin"):
+                return redirect(url_for('admin'))
             flash('Giriş Başarılı!', 'success')  # Show success message
             return redirect(url_for('main_page'))
         else:
@@ -221,6 +267,8 @@ def sign_up_page():
         username = request.form.get('username')
         password = request.form.get('password')
         check = request.form.get('check_password')
+        if ";" in username or ";" in username or ";" in check:
+            app.logger.info(f"SQL Injection attack tried by username: {username}, password: {password} check: {check}")
 
         # Validate that both username and password are provided
         if not username or not password:
@@ -304,6 +352,8 @@ def coins_page():
         the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
 
         # Attempt to protect against SQL injection by splitting and executing only the first command
+        if ";"in search_query or "'" in search_query:
+            app.logger.info(f"SQL Injection attack tried by query: {search_query}")
         queries = the_query.split(';')
         for query in queries:
             cursor.execute(query)
@@ -330,6 +380,49 @@ def coins_page():
         return render_template('coins.html', username=current_user.username, all_coins=all_coins)
     else:
         return render_template('coins.html', username='Misafir',  all_coins=all_coins)
+
+# Define the route for the coins page which allows users to search for coins
+@app.route("/economists", methods=['POST', 'GET'])
+def economists_page():
+    # Handle POST request when user submits a search query
+    if request.method == "POST":
+        # Retrieve the search query from the form
+        search_query = request.form.get('search_query')
+        # Construct a SQL query to find the coin by name
+        the_query =  f"SELECT url FROM economists WHERE name = '{search_query}'"
+        
+        if ";"in search_query or "'" in search_query:
+            app.logger.info(f"SQL Injection attack tried by query: {search_query}")  
+        # Attempt to protect against SQL injection by splitting and executing only the first command
+
+        queries = the_query.split(';')
+        for query in queries:
+            cursor.execute(query)
+            mysql.commit()
+
+        # Log the executed query for auditing purposes
+        app.logger.info(f"Query executed: {the_query}")
+
+        # Fetch all matching results for the query
+        search_results = cursor.fetchall()
+
+        # If there are results, redirect to the first result's URL; otherwise, return an error message
+        if search_results:
+            return redirect(search_results[0][0])
+        else:
+            return "Economist not found"
+
+    # If method is GET, display all coins
+    cursor.execute("SELECT * FROM economists")
+    all_economists = cursor.fetchall()
+
+    # Render the coins page with the list of all coins, customizing the username based on authentication status
+    if current_user.is_authenticated:
+        return render_template('economists.html', username=current_user.username, all_economists=all_economists)
+    else:
+        return render_template('economists.html', username='Misafir',  all_economists=all_economists)
+
+
 
 # Define a route to log out the current user
 @app.route('/logout')

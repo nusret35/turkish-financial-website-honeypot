@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TurkishNews-Coins</title>
+    <title>TurkishNews-Ekonomistler</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -37,7 +37,7 @@
     .my-container{
         position: relative;
         width: 100%;
-        height:500px;
+        height:750px;
     }
     .searchbar-bar{
         position: relative;
@@ -61,10 +61,10 @@
     }
     .form-place{
         position: absolute;
-        top: 20%;
+        top: 10%;
         width: 50%;
         left: 25%;
-        height: 400px;
+        height: 300px;
     }
     #search-results {
                 border: 1px solid black;
@@ -72,6 +72,27 @@
             }
     .results-li{
         color: black !important;
+    }
+
+    .details-container
+    {
+        background-color: white;
+        color: black;
+        border: black solid 4px;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 5%;
+        width: 30%;
+        left: 35%;
+        text-align: center;
+        justify-content: center;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .economist-image
+    {
+        width: 150px;
+        height: 150px;
     }
 
     </style>
@@ -132,15 +153,14 @@
             <a href="/" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-4 text-uppercase text-danger">Turkish<span class="text-white font-weight-normal">News</span></h1>
             </a>
-            
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                     <a href="/" class="nav-item nav-link">Anasayfa</a>
-                    <a href="/coins" class="nav-item nav-link active">Kripto Para Ara</a>
-                    <a href="/economists" class="nav-item nav-link">Ekonomistler</a>
+                    <a href="/coins" class="nav-item nav-link">Kripto Para Ara</a>
+                    <a href="/economists" class="nav-item nav-link active">Ekonomistler</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input id="searchInput" type="text" class="form-control border-0" placeholder="Ara">
@@ -186,22 +206,44 @@
     <div class="my-container">
         <div class="form-place">
 
-            <h1>Kripto Para Ara</h1>
-            <form action="{{ url_for('coins_page') }}" method="POST">
+            <h1>Ekonomistler</h1>
+            <form action="{{ url_for('economists_page') }}" method="POST">
                 <input type="text" name="search_query" id = "searchQuery" placeholder="Ara..." class="searchbar-bar">
-                <input type="submit" value="Search" class="searchbar-button">
+                <input type="submit" value="Ara" class="searchbar-button">
             </form>
             
             <div id="search-results" class="searchbar-results">
                 <ul>
-                    {% for coin in all_coins %}
-                    <li ><a href="{coin[2]}" class="results-li">{{ coin[1] }}</a></li>
+                    {% for economist in all_economists %}
+                        <li>
+                            <a href="#" onclick="showDetails('{{ economist[1] }}', '{{ economist[2] }}', '{{ economist[3] }}')" class="results-li">{{ economist[1] }}</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
+                 
+        </div>
+        <div id="details-container" class="details-container">
+            <!-- Details will be displayed here -->
         </div>
     </div>
+    <script>
+        function showDetails(name, imageUrl, shortInfo) {
+            var detailsContainer = document.getElementById("details-container");
+            detailsContainer.innerHTML = `
+                <div>
+                    <br/>
+                    <img src="${imageUrl}" alt="${name} Image" class="economist-image">
+                    <br/>
 
+                    <h2>${name}</h2>
+                    <br/>
+                    <p>${shortInfo}</p>
+                    <br/>
+                </div>
+            `;
+        }
+    </script>
     <script>
         // JavaScript to filter results based on user input
         document.getElementById('searchQuery').addEventListener('input', function () {

@@ -101,16 +101,14 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="/">Home</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Contact</a>
+                            <a class="nav-link text-body small" href="/">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="/login.html">Login</a>
+                            {% if username != 'Misafir' %}
+                                <a class="nav-link text-body small" href="/logout">Çıkış</a>
+                            {% else %}
+                                <a class="nav-link text-body small" href="login.html">Giriş</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </nav>
@@ -177,6 +175,9 @@
 
     <div class="users_add_div">
         <h2>Add User</h2>
+        <form action="/generate_100_users" method="GET">
+            <button style="position: absolute; right: 5%; top: 5%;" type="submit">Generate 25 Users</button>
+        </form>
         <form action="/admin/addUser" method="post">
             <label for="username">Username:</label>
             <br/>
