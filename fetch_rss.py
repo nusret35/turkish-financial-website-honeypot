@@ -93,7 +93,7 @@ def get_search_results(keyword):
             description = item.description[length+1:]
             image_src = item.links[0]['href']
             date = item.published
-            href = f"single.html/{quote(title)}"
+            href = f"/single.html/{quote(title)}"
             html_content += f"""
             <div class="col-lg-6">
                 <div class="position-relative mb-3">
