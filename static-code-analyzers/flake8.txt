@@ -1,0 +1,166 @@
+main.py:2:80: E501 line too long (84 > 79 characters)
+main.py:3:76: E262 inline comment should start with '# '
+main.py:3:80: E501 line too long (115 > 79 characters)
+main.py:5:1: F401 'datetime.datetime' imported but unused
+main.py:5:30: W291 trailing whitespace
+main.py:6:80: E501 line too long (102 > 79 characters)
+main.py:12:80: E501 line too long (97 > 79 characters)
+main.py:13:1: E302 expected 2 blank lines, found 1
+main.py:20:80: E501 line too long (82 > 79 characters)
+main.py:25:1: E305 expected 2 blank lines after class or function definition, found 1
+main.py:26:80: E501 line too long (89 > 79 characters)
+main.py:39:80: E501 line too long (93 > 79 characters)
+main.py:49:80: E501 line too long (80 > 79 characters)
+main.py:53:80: E501 line too long (85 > 79 characters)
+main.py:54:80: E501 line too long (95 > 79 characters)
+main.py:57:80: E501 line too long (97 > 79 characters)
+main.py:58:1: E302 expected 2 blank lines, found 1
+main.py:63:80: E501 line too long (90 > 79 characters)
+main.py:78:1: E302 expected 2 blank lines, found 1
+main.py:87:1: W293 blank line contains whitespace
+main.py:88:1: E302 expected 2 blank lines, found 1
+main.py:95:1: E302 expected 2 blank lines, found 1
+main.py:106:1: E302 expected 2 blank lines, found 1
+main.py:112:1: E302 expected 2 blank lines, found 1
+main.py:119:1: E302 expected 2 blank lines, found 1
+main.py:126:1: E302 expected 2 blank lines, found 1
+main.py:132:1: E302 expected 2 blank lines, found 1
+main.py:141:1: E302 expected 2 blank lines, found 1
+main.py:148:1: E302 expected 2 blank lines, found 1
+main.py:166:80: E501 line too long (88 > 79 characters)
+main.py:171:1: W293 blank line contains whitespace
+main.py:179:80: E501 line too long (100 > 79 characters)
+main.py:183:80: E501 line too long (141 > 79 characters)
+main.py:186:80: E501 line too long (129 > 79 characters)
+main.py:194:1: E302 expected 2 blank lines, found 1
+main.py:197:80: E501 line too long (88 > 79 characters)
+main.py:199:80: E501 line too long (88 > 79 characters)
+main.py:200:80: E501 line too long (88 > 79 characters)
+main.py:205:80: E501 line too long (128 > 79 characters)
+main.py:206:80: E501 line too long (133 > 79 characters)
+main.py:208:80: E501 line too long (128 > 79 characters)
+main.py:209:80: E501 line too long (121 > 79 characters)
+main.py:212:1: E302 expected 2 blank lines, found 1
+main.py:222:80: E501 line too long (102 > 79 characters)
+main.py:224:80: E501 line too long (127 > 79 characters)
+main.py:226:80: E501 line too long (115 > 79 characters)
+main.py:229:1: E302 expected 2 blank lines, found 1
+main.py:240:80: E501 line too long (107 > 79 characters)
+main.py:241:1: W293 blank line contains whitespace
+main.py:249:15: E275 missing whitespace after keyword
+main.py:254:80: E501 line too long (85 > 79 characters)
+main.py:256:80: E501 line too long (93 > 79 characters)
+main.py:263:1: E302 expected 2 blank lines, found 1
+main.py:271:80: E501 line too long (119 > 79 characters)
+main.py:275:80: E501 line too long (85 > 79 characters)
+main.py:277:1: W293 blank line contains whitespace
+main.py:279:11: E275 missing whitespace after keyword
+main.py:282:1: W293 blank line contains whitespace
+main.py:284:11: E275 missing whitespace after keyword
+main.py:284:43: E711 comparison to None should be 'if cond is not None:'
+main.py:290:80: E501 line too long (109 > 79 characters)
+main.py:296:1: W293 blank line contains whitespace
+main.py:297:80: E501 line too long (95 > 79 characters)
+main.py:304:1: E302 expected 2 blank lines, found 1
+main.py:311:28: W291 trailing whitespace
+main.py:312:34: W291 trailing whitespace
+main.py:313:80: E501 line too long (104 > 79 characters)
+main.py:316:1: E302 expected 2 blank lines, found 1
+main.py:322:1: W293 blank line contains whitespace
+main.py:328:80: E501 line too long (85 > 79 characters)
+main.py:328:86: W291 trailing whitespace
+main.py:331:11: E275 missing whitespace after keyword
+main.py:331:43: E711 comparison to None should be 'if cond is not None:'
+main.py:337:80: E501 line too long (123 > 79 characters)
+main.py:352:20: E222 multiple spaces after operator
+main.py:354:80: E501 line too long (100 > 79 characters)
+main.py:355:15: E225 missing whitespace around operator
+main.py:356:80: E501 line too long (83 > 79 characters)
+main.py:368:80: E501 line too long (102 > 79 characters)
+main.py:378:80: E501 line too long (111 > 79 characters)
+main.py:380:80: E501 line too long (97 > 79 characters)
+main.py:382:80: E501 line too long (86 > 79 characters)
+main.py:385:1: E302 expected 2 blank lines, found 1
+main.py:392:20: E222 multiple spaces after operator
+main.py:392:80: E501 line too long (80 > 79 characters)
+main.py:393:1: W293 blank line contains whitespace
+main.py:394:15: E225 missing whitespace around operator
+main.py:395:80: E501 line too long (83 > 79 characters)
+main.py:395:84: W291 trailing whitespace
+main.py:396:80: E501 line too long (100 > 79 characters)
+main.py:409:80: E501 line too long (102 > 79 characters)
+main.py:419:80: E501 line too long (111 > 79 characters)
+main.py:421:80: E501 line too long (112 > 79 characters)
+main.py:423:80: E501 line too long (101 > 79 characters)
+main.py:427:1: E303 too many blank lines (3)
+main.py:428:1: E302 expected 2 blank lines, found 3
+main.py:429:80: E501 line too long (85 > 79 characters)
+main.py:432:80: E501 line too long (97 > 79 characters)
+main.py:433:80: E501 line too long (88 > 79 characters)
+main.py:436:1: E302 expected 2 blank lines, found 1
+main.py:437:80: E501 line too long (81 > 79 characters)
+main.py:444:1: W293 blank line contains whitespace
+main.py:452:1: E302 expected 2 blank lines, found 1
+main.py:453:80: E501 line too long (81 > 79 characters)
+main.py:460:1: W293 blank line contains whitespace
+main.py:468:1: E302 expected 2 blank lines, found 1
+main.py:469:80: E501 line too long (81 > 79 characters)
+main.py:481:1: W293 blank line contains whitespace
+main.py:484:80: E501 line too long (84 > 79 characters)
+main.py:485:80: E501 line too long (80 > 79 characters)
+main.py:487:80: E501 line too long (85 > 79 characters)
+main.py:488:80: E501 line too long (89 > 79 characters)
+main.py:492:80: E501 line too long (92 > 79 characters)
+main.py:495:80: E501 line too long (110 > 79 characters)
+main.py:498:80: E501 line too long (91 > 79 characters)
+main.py:504:80: E501 line too long (84 > 79 characters)
+main.py:508:1: W293 blank line contains whitespace
+main.py:515:80: E501 line too long (101 > 79 characters)
+main.py:525:46: W291 trailing whitespace
+main.py:526:63: W291 trailing whitespace
+main.py:527:50: W291 trailing whitespace
+main.py:536:29: E124 closing bracket does not match visual indentation
+main.py:538:46: W291 trailing whitespace
+main.py:539:29: E128 continuation line under-indented for visual indent
+main.py:540:29: E128 continuation line under-indented for visual indent
+main.py:540:47: W291 trailing whitespace
+main.py:541:29: E128 continuation line under-indented for visual indent
+main.py:542:29: E128 continuation line under-indented for visual indent
+main.py:543:29: E128 continuation line under-indented for visual indent
+main.py:544:29: E128 continuation line under-indented for visual indent
+main.py:545:29: E128 continuation line under-indented for visual indent
+main.py:546:29: E128 continuation line under-indented for visual indent
+main.py:547:29: E128 continuation line under-indented for visual indent
+main.py:548:29: E128 continuation line under-indented for visual indent
+main.py:549:25: E124 closing bracket does not match visual indentation
+main.py:557:1: W293 blank line contains whitespace
+main.py:561:1: W293 blank line contains whitespace
+main.py:562:80: E501 line too long (90 > 79 characters)
+main.py:571:80: E501 line too long (85 > 79 characters)
+main.py:574:1: W293 blank line contains whitespace
+main.py:574:5: W292 no newline at end of file
+fetch_rss.py:2:1: F401 'xml.etree.ElementTree as ET' imported but unused
+fetch_rss.py:2:2: N817 camelcase 'xml.etree.ElementTree' imported as acronym 'ET'
+fetch_rss.py:10:1: E302 expected 2 blank lines, found 1
+fetch_rss.py:12:5: F841 local variable 'subject' is assigned to but never used
+fetch_rss.py:16:1: W293 blank line contains whitespace
+fetch_rss.py:17:1: W293 blank line contains whitespace
+fetch_rss.py:18:1: W293 blank line contains whitespace
+fetch_rss.py:20:1: E303 too many blank lines (4)
+fetch_rss.py:30:80: E501 line too long (86 > 79 characters)
+fetch_rss.py:33:80: E501 line too long (105 > 79 characters)
+fetch_rss.py:36:80: E501 line too long (101 > 79 characters)
+fetch_rss.py:50:80: E501 line too long (86 > 79 characters)
+fetch_rss.py:51:80: E501 line too long (98 > 79 characters)
+fetch_rss.py:54:80: E501 line too long (103 > 79 characters)
+fetch_rss.py:56:80: E501 line too long (83 > 79 characters)
+fetch_rss.py:58:80: E501 line too long (113 > 79 characters)
+fetch_rss.py:71:80: E501 line too long (86 > 79 characters)
+fetch_rss.py:74:80: E501 line too long (117 > 79 characters)
+fetch_rss.py:77:80: E501 line too long (107 > 79 characters)
+fetch_rss.py:84:1: E302 expected 2 blank lines, found 1
+fetch_rss.py:100:80: E501 line too long (94 > 79 characters)
+fetch_rss.py:103:80: E501 line too long (117 > 79 characters)
+fetch_rss.py:104:80: E501 line too long (82 > 79 characters)
+fetch_rss.py:106:80: E501 line too long (121 > 79 characters)
+fetch_rss.py:109:80: E501 line too long (97 > 79 characters)
