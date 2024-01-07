@@ -27,11 +27,7 @@ CREATE TABLE comments (
 ## Coins Table
 
 ```sql
-CREATE TABLE coins (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    url VARCHAR(255)
-);
+CREATE TABLE coins (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), url VARCHAR(255));
 
 ```
 ## TrackAd Table

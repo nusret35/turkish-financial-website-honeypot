@@ -23,3 +23,25 @@
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: google.com', 'Date': '2024-01-06 21:09:48,443'}
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://sucourse.sabanciuniv.edu/plus/', 'Date': '2024-01-06 21:10:21,324'}
 {'IP': '127.0.0.1', 'Page': '/redirect', 'Log': 'Unvalidated redirect: https://sucourse.sabanciuniv.edu/plus/', 'Date': '2024-01-06 21:10:39,304'}
+{'IP': '127.0.0.1', 'Page': '/economists', 'Log': "SQL Injection attack tried by query: '; DROP TABLE coins --", 'Date': '2024-01-07 14:55:35,824'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins --'", 'Date': '2024-01-07 15:00:33,508'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins --'", 'Date': '2024-01-07 15:02:27,286'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:04:28,248'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:09:10,188'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '''; drop table coins;--'", 'Date': '2024-01-07 15:10:25,876'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '''; DROP TABLE COINS --'", 'Date': '2024-01-07 15:10:41,659'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '''; drop TABLE COINS --'", 'Date': '2024-01-07 15:12:40,045'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; drop table coins'", 'Date': '2024-01-07 15:13:35,828'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins --'", 'Date': '2024-01-07 15:22:05,302'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:23:42,747'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = '''; DROP TABLE COINS --'", 'Date': '2024-01-07 15:23:49,607'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; drop tables coins;'", 'Date': '2024-01-07 15:24:00,979'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:26:29,275'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins;--'", 'Date': '2024-01-07 15:26:39,943'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:28:12,175'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; UNION SELECT url from coins where name = 'btc';--'", 'Date': '2024-01-07 15:28:36,130'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; UNION SELECT url FROM coins where name = 'btc';--'", 'Date': '2024-01-07 15:30:28,972'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = ''; DROP TABLE coins --'", 'Date': '2024-01-07 15:31:57,161'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:55:11,673'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('btc','btc.org');--", 'Date': '2024-01-07 16:08:56,636'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('eth','eth.org');--", 'Date': '2024-01-07 16:09:15,819'}

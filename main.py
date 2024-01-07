@@ -1,7 +1,7 @@
 # Import necessary modules and libraries
 from flask import Flask, render_template, redirect, url_for, flash, request, jsonify
 from fetch_rss import news_feed_html, get_search_results, get_single_news  #custom functions for handling RSS feeds
-import pymysql
+import mysql.connector
 from datetime import datetime 
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -50,9 +50,9 @@ app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'  # Set your MySQL password here
 app.config['MYSQL_DB'] = 'turkishdb'
 
 # Create a MySQL database connection
-mysql = pymysql.connect(host=app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
+mysql = mysql.connector.connect(host=app.config['MYSQL_HOST'], user=app.config['MYSQL_USER'],
                         password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
-cursor = mysql.cursor()
+cursor = mysql.cursor(buffered=True)
 
 # Define a User class for Flask-Login with UserMixin for implementing user authentication methods
 class User(UserMixin):
@@ -213,10 +213,11 @@ def main_page():
 def search_result_page():
     # Retrieve the keyword from the query parameters and sanitize against XSS
     keyword = request.args.get('keyword', '')
+
     if "<" in keyword or ">" in keyword:
         app.logger.info(f"Reflected XSS attack on Search Keyword: {keyword}")
 
-    # Fetch the search results based on the keyword
+    # Fetch the search results based on the keyword (VULNERABILITY)
     results_html_content = get_search_results(keyword)
 
     # Render the search results page template, customizing the username based on authentication status
@@ -348,16 +349,22 @@ def coins_page():
     if request.method == "POST":
         # Retrieve the search query from the form
         search_query = request.form.get('search_query')
-        # Construct a SQL query to find the coin by name
         the_query =  f"SELECT url FROM coins WHERE name = '{search_query}'"
-
-        # Attempt to protect against SQL injection by splitting and executing only the first command
-        if ";"in search_query or "'" in search_query:
-            app.logger.info(f"SQL Injection attack tried by query: {search_query}")
         queries = the_query.split(';')
+
+        if ";"in search_query or "'" in search_query:
+            app.logger.info(f"SQL Injection attack tried by query: {search_query}")  
+
+        # Iterate through the queries
         for query in queries:
-            cursor.execute(query)
-            mysql.commit()
+            if query == '--':
+                pass
+            if '%s' in query:
+                # Execute the query with placeholder
+                cursor.execute(query, (search_query,))
+            else:
+                # Execute the query without placeholder
+                cursor.execute(query)
 
         # Log the executed query for auditing purposes
         app.logger.info(f"Query executed: {the_query}")
@@ -391,14 +398,20 @@ def economists_page():
         # Construct a SQL query to find the coin by name
         the_query =  f"SELECT url FROM economists WHERE name = '{search_query}'"
         
-        if ";"in search_query or "'" in search_query:
-            app.logger.info(f"SQL Injection attack tried by query: {search_query}")  
         # Attempt to protect against SQL injection by splitting and executing only the first command
-
+            
         queries = the_query.split(';')
+
+        # Iterate through the queries
         for query in queries:
-            cursor.execute(query)
-            mysql.commit()
+            if query == '--':
+                pass
+            if '%s' in query:
+                # Execute the query with placeholder
+                cursor.execute(query, (search_query,))
+            else:
+                # Execute the query without placeholder
+                cursor.execute(query)
 
         # Log the executed query for auditing purposes
         app.logger.info(f"Query executed: {the_query}")
@@ -500,6 +513,7 @@ def add_comment():
 def single_news_page(keyword):
     # Fetch comments related to the current news link
     query = 'SELECT * FROM comments WHERE news_link = %s'
+
     cursor.execute(query, ("/single.html/"+keyword,))
     comment_data = cursor.fetchall()  # Fetching all comments related to the article
 
