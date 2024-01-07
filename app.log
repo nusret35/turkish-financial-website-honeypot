@@ -56,3 +56,4 @@
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:50:14,702'}
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:50:36,715'}
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:51:15,662'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')" />', 'Date': '2024-01-07 16:55:26,246'}
