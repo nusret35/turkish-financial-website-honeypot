@@ -49,7 +49,11 @@
                             <a class="nav-link text-body small" href="/">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="/login.html">Giriş</a>
+                            {% if username != 'Misafir' %}
+                                <a class="nav-link text-body small" href="/logout">Çıkış</a>
+                            {% else %}
+                                <a class="nav-link text-body small" href="login.html">Giriş</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </nav>
@@ -204,7 +208,7 @@
                             {% for comment in comments %}
                                 {% if comment.news_link == current_news_link %}
                                     <div class="media mb-4">
-                                        <img src="../static/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <img src="../static/img/user.png" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
                                             <h6><a class="text-secondary font-weight-bold" href="">{{ comment.username }}</a> <small><i>{{ comment.created_at.strftime('%d %b %Y') }}</i></small></h6>
                                             <p>{{ comment.content | safe }}</p> <!--- the output is not sanitized and vulnerable to XSS attack-->

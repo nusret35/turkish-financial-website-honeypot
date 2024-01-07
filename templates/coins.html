@@ -88,7 +88,11 @@
                             <a class="nav-link text-body small" href="/">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="/login.html">Giriş</a>
+                            {% if username != 'Misafir' %}
+                                <a class="nav-link text-body small" href="/logout">Çıkış</a>
+                            {% else %}
+                                <a class="nav-link text-body small" href="login.html">Giriş</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </nav>
@@ -132,14 +136,13 @@
             <a href="/" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-4 text-uppercase text-danger">Turkish<span class="text-white font-weight-normal">News</span></h1>
             </a>
-            
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="/" class="nav-item nav-link">Anasayfa</a>
-                    <a href="/coins" class="nav-item nav-link active">Kripto Para Ara</a>
+                    <a href="/" class="nav-item nav-link active">Anasayfa</a>
+                    <a href="/coins" class="nav-item nav-link">Kripto Para Ara</a>
                     <a href="/economists" class="nav-item nav-link">Ekonomistler</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
@@ -153,13 +156,16 @@
                     // Get the search button and input element by their IDs
                     var searchButton = document.getElementById('searchButton');
                     var searchInput = document.getElementById('searchInput');
+            
+
+                    
 
                     function performSearch() {
                         var keyword = searchInput.value;
                         console.log('Search keyword:', keyword);
             
                         // Set the new location to search-result.html
-                        window.location.href = 'search-result/'+keyword;
+                        window.location.href = 'search-result?keyword='+keyword;
                     }
                     // Attach an event listener to the search button
                     searchButton.addEventListener('click', function () {
