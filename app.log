@@ -47,3 +47,12 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('eth','eth.org');--", 'Date': '2024-01-07 16:09:15,819'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('btc','btc.org');", 'Date': '2024-01-07 16:13:43,682'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';drop table coins;--", 'Date': '2024-01-07 16:14:13,579'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'SQL Injection attack tried by query: \';insert into users (username, password, role) values ("hacker","1","admin");--', 'Date': '2024-01-07 16:37:01,160'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'SQL Injection attack tried by query: \';insert into coins(name, url) values ("hacker", "hacker_url");--', 'Date': '2024-01-07 16:38:06,650'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'SQL Injection attack tried by query: \';insert into users (username, password, role) values ("hacker","1","admin");--', 'Date': '2024-01-07 16:40:35,928'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:47:33,946'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:48:11,021'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:49:55,748'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:50:14,702'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:50:36,715'}
+{'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 16:51:15,662'}

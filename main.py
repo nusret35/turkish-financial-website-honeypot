@@ -365,7 +365,8 @@ def coins_page():
             else:
                 # Execute the query without placeholder
                 cursor.execute(query)
-
+            if "insert" in query.lower():
+                mysql.commit()
         # Log the executed query for auditing purposes
         app.logger.info(f"Query executed: {the_query}")
 
@@ -396,7 +397,7 @@ def economists_page():
         # Retrieve the search query from the form
         search_query = request.form.get('search_query')
         # Construct a SQL query to find the coin by name
-        the_query =  f"SELECT url FROM economists WHERE name = '{search_query}'"
+        the_query =  f"SELECT * FROM economists WHERE name = '{search_query}'"
         
         # Attempt to protect against SQL injection by splitting and executing only the first command
             
@@ -412,7 +413,10 @@ def economists_page():
             else:
                 # Execute the query without placeholder
                 cursor.execute(query)
+            if "insert" in query.lower():
+                mysql.commit()
 
+        
         # Log the executed query for auditing purposes
         app.logger.info(f"Query executed: {the_query}")
 
