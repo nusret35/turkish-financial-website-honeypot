@@ -145,8 +145,8 @@ def is_username_unique(username):
         result = cursor.fetchone()
         return result[0] == 0
 
-@app.route('/generate_100_users')
-def generate_100_users():
+@app.route('/generate_25_users')
+def generate_25_users():
     if not current_user.is_admin():
         app.logger.info("User try to reach forbidden page.")
         return render_template('access_denied.html')
