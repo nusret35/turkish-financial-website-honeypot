@@ -332,6 +332,8 @@ INSERT INTO comments (username, content, news_link) VALUES ('ugur', 'Bu konuda d
 
 ```
 
+# Users
+
 ``` sql
 INSERT INTO users (username,password) VALUES 
 ("ugur", "pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd"), 
