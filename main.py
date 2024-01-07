@@ -260,6 +260,8 @@ def login_page():
     else:
         return render_template('login.html', username='Misafir')
 
+
+
 # Define the sign-up page route
 @app.route("/sign-up.html", methods=['POST', 'GET'])
 def sign_up_page():
@@ -300,6 +302,9 @@ def sign_up_page():
         return render_template('sign-up.html', username=current_user.username)
     else:
         return render_template('sign-up.html', username='Misafir')
+
+
+
 
 # Define the admin page route
 @app.route('/admin')
@@ -372,7 +377,7 @@ def coins_page():
 
         # Fetch all matching results for the query
         search_results = cursor.fetchall()
-
+        print(search_results)
         # If there are results, redirect to the first result's URL; otherwise, return an error message
         if search_results:
             return redirect(search_results[0][0])
@@ -380,7 +385,7 @@ def coins_page():
             return "Coin not found"
 
     # If method is GET, display all coins
-    cursor.execute("SELECT id, name FROM coins")
+    cursor.execute("SELECT * FROM coins")
     all_coins = cursor.fetchall()
 
     # Render the coins page with the list of all coins, customizing the username based on authentication status

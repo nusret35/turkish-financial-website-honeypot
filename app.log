@@ -60,3 +60,5 @@
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 17:03:01,652'}
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 17:05:35,902'}
 {'IP': '127.0.0.1', 'Page': '/search-result/', 'Log': 'Reflected XSS attack on Search Keyword: <img src=1 onerror="alert(\'hacked\')"/>', 'Date': '2024-01-07 17:05:42,840'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': 'SQL Injection attack tried by query: \';insert into coins (name,url) values ("hacker","https://alivehbiguneysu.net/");--', 'Date': '2024-01-07 17:57:38,822'}
+{'IP': '127.0.0.1', 'Page': '/coins', 'Log': "Query executed: SELECT url FROM coins WHERE name = 'hacker'", 'Date': '2024-01-07 18:04:05,407'}
