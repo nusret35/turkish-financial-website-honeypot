@@ -331,8 +331,8 @@ INSERT INTO comments (username, content, news_link) VALUES ('ekonomist', 'Bu bil
 INSERT INTO comments (username, content, news_link) VALUES ('ugur', 'Bu konuda daha fazla tartışma görmek istiyorum.', 'http://127.0.0.1:5000/single.html/New%20York%20borsası%20yatay%20seyirle%20kapandı');
 
 ```
-``` sql
 
+``` sql
 INSERT INTO users (username,password) VALUES 
 ("ugur", "pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd"), 
 ("alivehbi", "pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd"), 
@@ -439,3 +439,4 @@ INSERT INTO users (username,password) VALUES
 ('colenathan', 'pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd') ,
 ('opowell', 'pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd') ,
 ('millersandra', 'pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd');
+```
