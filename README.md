@@ -1,12 +1,12 @@
 # Turkish Financial Website Honeypot
 
-This project initially created for Cybersecurity Applications course which turned out as a good, useful, easy-to-use decoy. The repository includes a financial website template. The feed is fetched from an RSS. Here is the [link](https://www.ekonomidunya.com/rss_ekonomi_1.xml ) for it. The project consists of Flask backend with pure HTML frontend. MySQL is used for the database. The vulnerabilities include stored and reflected XSS, SQL Injection, and unvalidated redirect. Every action of the attacker is logged to the ```app.log``` file.
+This project initially created for Cybersecurity Applications course which turned out as a good, useful, easy-to-use decoy. The repository includes a financial website template. The feed is fetched from an RSS. Here is the [link](https://www.ekonomidunya.com/rss_ekonomi_1.xml ) for it. The project consists of Flask backend with pure HTML frontend. MySQL is used for the database. The vulnerabilities include stored and reflected XSS, SQL Injection, and unvalidated redirect. The vulnerabilities and their locations are indicated below. Also, all the database tables and sample data content are specified as well. Every action of the attacker is logged to the ```app.log``` file.
 
 # Prerequisites
 
-In order to run the project, you should have installed ```Flask``` by:
+In order to run the project, you should have installed the packages in that are indicated in the requirements.txt. You can just run the following command (inside the directory) to download all the packages:
 
-```pip install Flask```
+```pip install -r requirements.txt```
 
 
 
