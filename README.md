@@ -2,12 +2,17 @@
 
 Best decoy to trick attackers and monitor their actions.
 
-<img width="1728" alt="Screenshot 2024-01-25 at 02 45 32" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/853b3387-5523-44b3-b86d-92626f7f1aad">
+## Main Page
+<img width="1000" alt="ss-honey" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/90306b72-1158-4d08-9e83-4c6f285abff5">
 
-<img width="1728" alt="Screenshot 2024-01-25 at 02 46 00" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/5bf7fc43-eac4-42d7-8188-52518413b68d">
+## Search Result Page
+<img width="1000" alt="ss-honey2" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/5f0abcae-a868-4794-af19-5cbdb1f80785">
 
-<img width="1728" alt="Screenshot 2024-01-25 at 02 46 13" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/dfd59267-002e-4ee4-a876-9b535191608c">
+## Login Page
+<img width="1000" alt="ss-honey3" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/02005334-ef7d-48e1-a858-5945a8de78eb">
 
+
+# Description
 
 This project initially created for Cybersecurity Applications course which turned out as a good, useful, easy-to-use decoy. The repository includes a financial website template. The feed is fetched from an RSS. Here is the [link](https://www.ekonomidunya.com/rss_ekonomi_1.xml ) for it. The project consists of Flask backend with pure HTML frontend. MySQL is used for the database. The vulnerabilities include stored and reflected XSS, SQL Injection, and unvalidated redirect. The vulnerabilities and their locations are indicated below. Also, all the database tables and sample data content are specified as well. Every action of the attacker is logged to the ```app.log``` file.
 
