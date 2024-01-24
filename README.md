@@ -1,3 +1,8 @@
+# Turkish Financial Website Honeypot
+
+This project initially created for Cybersecurity Applications course. The repository includes a financial website template. The feed is fetched from an RSS
+
+
 # Database Tables
 
 ## Users Table
