@@ -6,11 +6,25 @@ This project initially created for Cybersecurity Applications course which turne
 
 In order to run the project, you should have installed the packages in that are indicated in the requirements.txt. You can just run the following command (inside the directory) to download all the packages:
 
-```pip install -r requirements.txt```
+`pip install -r requirements.txt`
 
+Create all the necessary database tables. They are specified below.
 
+Finally, just run ```main.py``` and you are good to go:
+
+`python3 main.py`
+
+# Contributors
+
+The developers of this project are [Nusret Ali Kızılaslan](https://github.com/nusret35), [Ali Vehbi Güneysu](https://github.com/alivehbi), and [Uğur Yüce](https://github.com/yuceugur). If you have any further questions, don't hesitate to contact us. We are open for pull requests and any further development.
 
 # Database Tables
+
+First, create the database ```turkishdb```:
+
+```sql
+CREATE DATABASE turkishdb
+```
 
 ## Users Table
 
@@ -23,6 +37,8 @@ CREATE TABLE users (
 );
 ```
 ## Comments Table
+
+
 
 ```sql
 CREATE TABLE comments (
@@ -202,7 +218,7 @@ INSERT INTO coins (name, url) VALUES
 ('bnb','bnb-coin.com') ;
 ```
 
-# Users
+## Users
 
 ``` sql
 INSERT INTO users (username,password) VALUES 
@@ -313,7 +329,7 @@ INSERT INTO users (username,password) VALUES
 ('millersandra', 'pbkdf2:md5:600000$ILSRaY79USIMO5ra$bbce65e515f7576ea83cb94621e18edd');
 ```
 
-# Economists
+## Economists
 
 ``` sql
 INSERT INTO economists (name, image_url, short_info) VALUES ('Paul Rogers', 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png', 'One of the best economists in the world') ,
@@ -419,7 +435,7 @@ INSERT INTO economists (name, image_url, short_info) VALUES ('Paul Rogers', 'htt
 ```
 
 
-# TRACKAD data
+## TRACKAD data
 ``` sql
 INSERT INTO TRACKAD (user,date, url) VALUES ('olnuqiy', '2024-01-04 23:25:57', 'https://www.eye-tech.co.uk'),
 ('mnnsl90', '2024-01-06 13:42:30', 'https://www.eye-tech.co.uk'),
@@ -501,7 +517,7 @@ INSERT INTO TRACKAD (user,date, url) VALUES ('olnuqiy', '2024-01-04 23:25:57', '
 ('xowjb', '2024-01-03 16:08:42', 'https://www.eye-tech.co.uk');
 ```
 
-# COMMENTS
+## Comments
 ``` sql
 INSERT INTO comments (username, content, created_at, news_link) VALUES ('alivehbi', 'bu iyi haber işte!', '2024-01-07 19:00:34', '/single.html/Borsanın 10 yıllık ocak performansı'),
 ('nusretk', 'ben böyle işi ya!', '2024-01-07 18:57:01', "/single.html/New York borsası ABD'nin istihdam verilerinin ardından ya") ,
