@@ -34,10 +34,10 @@ for handler in logging.root.handlers:
     handler.setFormatter(StructuredFormatter())
 
 # Create a Flask application with a custom name
-app = Flask("cs437-project")
+app = Flask("turkish-financial-website-honeypot)
 
 # Set a secret key for session management (change this to a random secret key for production)
-app.config['SECRET_KEY'] = 'bro_cs437_is_cool'
+app.config['SECRET_KEY'] = 'bro_cs437_is_cool' 
 
 # Initialize Flask-Login for user authentication management
 login_manager = LoginManager(app)
@@ -46,7 +46,7 @@ login_manager.login_view = 'login_page'
 # Configure database connection parameters for MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'CS437.isthebest'  # Set your MySQL password here
+app.config['MYSQL_PASSWORD'] = ''  # Set your MySQL password here
 app.config['MYSQL_DB'] = 'turkishdb'
 
 # Create a MySQL database connection
