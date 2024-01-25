@@ -642,4 +642,4 @@ INSERT INTO comments (username, content, created_at, news_link) VALUES ('alivehb
 ('scott26', 'ben böyle işi ya!', '2024-01-07 18:56:45', '/single.html/Borsanın 10 yıllık ocak performansı');
 ``` 
 ## License
-`llm-attacks` is licensed under the terms of the MIT license. See LICENSE for more details.
+`turkish-financial-website-honeypot` is licensed under the terms of the MIT license. See LICENSE for more details.
