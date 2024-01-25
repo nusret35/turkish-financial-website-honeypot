@@ -45,7 +45,7 @@ The developers of this project are [Nusret Ali Kızılaslan](https://github.com/
 First, create the database ```turkishdb```:
 
 ```sql
-CREATE DATABASE turkishdb
+CREATE DATABASE turkishdb;
 ```
 
 ## Users Table
