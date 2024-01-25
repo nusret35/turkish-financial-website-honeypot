@@ -24,13 +24,17 @@ This project initially created for Cybersecurity Applications course which turne
 
 In order to run the project, you should have installed the packages in that are indicated in the requirements.txt. You can just run the following command (inside the directory) to download all the packages:
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 Create all the necessary database tables. They are specified below.
 
 Finally, just run ```main.py``` and you are good to go:
 
-`python3 main.py`
+```bash
+python3 main.py
+```
 
 # Contributors
 
@@ -637,3 +641,5 @@ INSERT INTO comments (username, content, created_at, news_link) VALUES ('alivehb
 ('nusretk', 'beğendim bu haberi', '2024-01-07 18:57:01', '/single.html/ISO; enerji depolama standartlarını Çin’de belirleyecek') ,
 ('scott26', 'ben böyle işi ya!', '2024-01-07 18:56:45', '/single.html/Borsanın 10 yıllık ocak performansı');
 ``` 
+## License
+`llm-attacks` is licensed under the terms of the MIT license. See LICENSE for more details.
