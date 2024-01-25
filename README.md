@@ -1,6 +1,13 @@
 # Turkish Financial News Website Honeypot
 
-Best decoy to trick attackers and monitor their actions.
+**Best decoy to trick attackers and monitor their actions.**
+
+
+
+# Description
+
+This project initially created for Cybersecurity Applications course which turned out as a good, useful, easy-to-use decoy. The repository includes a financial website template. The feed is fetched from an RSS. Here is the [link](https://www.ekonomidunya.com/rss_ekonomi_1.xml ) for it. The project consists of Flask backend with pure HTML frontend. MySQL is used for the database. The vulnerabilities include stored and reflected XSS, SQL Injection, cryptographic failure (MD5 used for hashes) and unvalidated redirect. The vulnerabilities and their locations are indicated below. Also, all the database tables and sample data content are specified as well. Every action of the attacker is logged to the ```app.log``` file.
+
 
 ## Main Page
 <img width="1000" alt="ss-honey" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/90306b72-1158-4d08-9e83-4c6f285abff5">
@@ -10,11 +17,6 @@ Best decoy to trick attackers and monitor their actions.
 
 ## Login Page
 <img width="1000" alt="ss-honey3" src="https://github.com/nusret35/turkish-financial-website-honeypot/assets/96892300/02005334-ef7d-48e1-a858-5945a8de78eb">
-
-
-# Description
-
-This project initially created for Cybersecurity Applications course which turned out as a good, useful, easy-to-use decoy. The repository includes a financial website template. The feed is fetched from an RSS. Here is the [link](https://www.ekonomidunya.com/rss_ekonomi_1.xml ) for it. The project consists of Flask backend with pure HTML frontend. MySQL is used for the database. The vulnerabilities include stored and reflected XSS, SQL Injection, cryptographic failure (MD5 used for hashes) and unvalidated redirect. The vulnerabilities and their locations are indicated below. Also, all the database tables and sample data content are specified as well. Every action of the attacker is logged to the ```app.log``` file.
 
 # Prerequisites
 
