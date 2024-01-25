@@ -1,5 +1,7 @@
 # Turkish Financial News Website Honeypot
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **Best decoy to trick attackers and monitor their actions.**
 
 
